@@ -6,12 +6,12 @@ The folders correspond to different tools, each tool files are a basic WordPress
 
 I.E. each plugin consists in this typical very simple directory structure :
   
- /plugin-name
+    /plugin-name
  
-     plugin-name.php
+        plugin-name.php
      
-     /includes
+        /includes
      
-     /js
+        /js
      
-     /css
+        /css
