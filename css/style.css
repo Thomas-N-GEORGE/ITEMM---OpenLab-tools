@@ -1,5 +1,5 @@
 .olt-title {
-    color: green;
+    color: red;
 }
 
 .olt-container {
@@ -13,17 +13,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    width: 80%;
+    width: 100%;
 }
 
 .olt-wrapper{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
     padding: 2rem;
     font-size: 2rem;
-    background-color: blanchedalmond;
 }
 
-.olt-result {
+.olt-wrapper div {
+    background-color: lightgrey;
+}
+
+.olt-value {
     text-align: end;
+}
+
+.olt-wrapper .olt-result {
+    background-color: lightgreen;
+}
+
+.olt-wrapper .olt-input {
+    background-color: blanchedalmond;
 }
