@@ -16,13 +16,15 @@
     width: 100%;
 }
 
-.olt-wrapper{
+.olt-wrapper, #olt-form1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 1rem;
     padding: 2rem;
     font-size: 2rem;
 }
+
+
 
 .olt-wrapper div {
     background-color: lightgrey;

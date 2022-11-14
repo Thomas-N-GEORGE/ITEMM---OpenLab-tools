@@ -1,61 +1,98 @@
 <h1 class="olt-title">OUTIL LAMES IDIOPHONES</h1>
 
 <div class="olt-container">
-    <form action="">
-        <div class="olt-wrapper">
-            <div>Longueur L (m)</div>
-            <input type="text" class="olt-value olt-input" id="olt-long" value="1" />
-            <div>knL mode 1</div>
-            <div class="olt-value">4,73</div>
-            <div>Base b (m)</div>
-            <input type="text" class="olt-value olt-input" id="olt-base1" value="1" />
-            <div>Hauteur h (m)</div>
-            <input type="text" class="olt-value olt-input" id="olt-haut1" value="1" />
-            <div>Volume (m3)</div>
-            <div class="olt-value">0,00057343</div>
-            <div>Masse volumique (kg/m3)</div>
-            <input type="text" class="olt-value olt-input" id="olt-mvol1" value="1" />
-            <div>Aire (m2)</div>
-            <div class="olt-value">0,00004</div>
-            <div>Moment quadratique (m4)</div>
-            <div class="olt-value">0,00000005767666667</div>
-            <div>Masse(kg)</div>
-            <div class="olt-value">4,472754</div>
-            <div>Module de young (Pa)</div>
-            <input type="text" class="olt-value olt-input" value="1" />
-            <div>Fréquence (hz)</div>
-            <input type="text" class="olt-value olt-result" id="olt-freq1" value="1" />
-            <div>Vitesse des ondes (m/s)</div>
-            <div class="olt-value">71,22</div>
+    <!-- <div class="olt-wrapper"> -->
+    <form id="olt-form1" action="">
+        <div>
+            <label for="olt-long">Longueur L (m)</label>
         </div>
+        <input type="text" name="olt-long" form="olt-form1" class="olt-value olt-input" id="olt-long1" value="1" />
+
+        <button type="submit"></button>
+
+        <div>knL mode 1</div>
+        <div class="olt-value" id="olt-knl1">4,73</div>
+
+        <div>
+            <label for="olt-base1">Base b (m)</label>
+        </div>
+        <input type="text" name="olt-base1" form="olt-form1" class="olt-value olt-input" id="olt-base1" value="1" />
+
+        <div>
+            <label for="olt-haut1">Hauteur h (m)</label>
+        </div>
+        <input type="text" name="olt-haut1" form="olt-form1" class="olt-value olt-input" id="olt-haut1" value="1" />
+
+        <div>Volume (m3)</div>
+        <div class="olt-value" id="olt-vol1" value="1">0,00057343</div>
+
+        <div>
+            <label for="olt-mvol1">Masse volumique (kg/m3)</label>
+        </div>
+        <input type="text" name="olt-vol1" form="olt-form1" class="olt-value olt-input" id="olt-mvol1" value="1" />
+
+        <div>Aire (m2)</div>
+        <div class="olt-value" id="olt-aire1" value="1">0,00004</div>
+
+        <div>Moment quadratique (m4)</div>
+        <div class="olt-value" id="olt-mom1" value="1">0,00000005767666667</div>
+
+        <div>Masse(kg)</div>
+        <div class="olt-value" id="olt-mass1" value="1">4,472754</div>
+
+        <div>
+            <label for="olt-myou1">Module de young (Pa)</label>
+        </div>
+        <input type="text" name="olt-myou1" form="olt-form1" class="olt-value olt-input" id="olt-myou1" value="1" />
+
+        <div>
+            <label for="olt-freq1">Fréquence (hz)</label>
+        </div>
+        <!-- type="text" name="olt-freq1" form="olt-form1" -->
+        <div class="olt-value olt-result" id="olt-freq1" value="1"></div>
+
+        <div>Vitesse des ondes (m/s)</div>
+        <div class="olt-value" id="olt-vito1" value="1">71,22</div>
     </form>
+    <!-- </div> -->
 
     <form action="">
         <div class="olt-wrapper">
             <div>Longueur L (m)</div>
-            <input type="text" class="olt-value olt-result" value="1" />
+            <div class="olt-value olt-result" id="olt-long2" value="1"></div>
+
             <div>knL mode 1</div>
-            <div class="olt-value">4,73</div>
+            <div class="olt-value" id="olt-knl2" value="1">4,73</div>
+
             <div>Base b (m)</div>
-            <input type="text" class="olt-value olt-input" id="olt-base2" value="1" />
+            <input type="text" class="olt-value olt-input" form="olt-form1" id="olt-base2" value="1" />
+
             <div>Hauteur h (m)</div>
-            <input type="text" class="olt-value olt-input" id="olt-haut1" value=" 1" />
+            <input type="text" class="olt-value olt-input" form="olt-form1" id="olt-haut2" value=" 1" />
+
             <div>Volume (m3)</div>
-            <div class=" olt-value">0,000004824044807</div>
+            <div class=" olt-value" id="olt-vol2" value="1">0,000004824044807</div>
+
             <div>Masse volumique (kg/m3)</div>
-            <input type="text" class="olt-value olt-input" id="olt-mvol2" value="1" />
+            <input type="text" class="olt-value olt-input" form="olt-form1" id="olt-mvol2" value="1" />
+
             <div>Aire (m2)</div>
-            <div class="olt-value">0,00004</div>
+            <div class="olt-value" id="olt-aire2" value="1">0,00004</div>
+
             <div>Moment quadratique (m4)</div>
-            <div class="olt-value">1,33E-11</div>
+            <div class="olt-value" id="olt-mom2" value="1">1,33E-11</div>
+
             <div>Masse(kg)</div>
-            <div class="olt-value">0,03762754949</div>
+            <div class="olt-value" id="olt-mass2" value="1">0,03762754949</div>
+
             <div>Module de young (Pa)</div>
-            <input type="text" class="olt-value olt-input" id="olt-myou" value="1" />
+            <input type="text" class="olt-value olt-input" form="olt-form1" id="olt-myou2" value="1" />
+
             <div>Fréquence (hz)</div>
-            <input type="text" class="olt-value olt-input" id="olt-freq1" value="1" />
+            <input type="text" class="olt-value olt-input" form="olt-form1" id="olt-freq2" value="1" />
+
             <div>Vitesse des ondes (m/s)</div>
-            <div class="olt-value">130,0271552</div>
+            <div class="olt-value" id="olt-vito2" value="1">130,0271552</div>
         </div>
     </form>
 </div>
