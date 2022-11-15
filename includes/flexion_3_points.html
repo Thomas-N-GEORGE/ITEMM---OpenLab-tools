@@ -1,0 +1,98 @@
+<div class="olt-container">
+    <!-- <div class="olt-wrapper"> -->
+    <h1 class="olt-title">FLEXION 3 POINTS</h1>
+
+    <h2>Formulaire de calcul pour la flexion 3 points</h2>
+    <h2>une poutre de section rectangulaire (ou carrée) entre deux points</h2>
+    <h2>Appliquer une masse et mesurer le déplacement</h2>
+    <h2>Poutre appuyée - appuyée </h2>
+
+    <form id="olt-form1" action="">
+        <!--Base de la poutre b (m) 	0,01
+            Hauteur de la poutre h (m)	0,01
+            Longueur entre les deux appuis (L)	0,5
+            Longueur total poutre (m)	0,6
+            Masse ajoutée au centre (kg)	0,5
+            Déplacement mesuré au centre (m)	0,001
+            Masse poutre (kg)	0,5-->
+        <div>
+            <label for="olt-base">Base de la poutre b (m)</label>
+        </div>
+        <input type="text" name="olt-base" form="olt-form1" class="olt-value olt-input" id="olt-base" value="1" />
+
+        <div>
+            <label for="olt-haut">Hauteur de la poutre h (m)</label>
+        </div>
+        <input type="text" name="olt-haut" form="olt-form1" class="olt-value olt-input" id="olt-haut" value="1" />
+
+        <div>
+            <label for="olt-l2app">Longueur entre les deux appuis (L)</label>
+        </div>
+        <input type="text" name="olt-l2app" form="olt-form1" class="olt-value olt-input" id="olt-l2app" value="1" />
+
+        <div>
+            <label for="olt-ltot">Longueur total poutre (m)</label>
+        </div>
+        <input type="text" name="olt-ltot" form="olt-form1" class="olt-value olt-input" id="olt-ltot" value="1" />
+
+        <div>
+            <label for="olt-mcen">Masse ajoutée au centre (kg)</label>
+        </div>
+        <input type="text" name="olt-mcen" form="olt-form1" class="olt-value olt-input" id="olt-mcen" value="1" />
+
+        <div>
+            <label for="olt-dep">Déplacement mesuré au centre (m)</label>
+        </div>
+        <input type="text" name="olt-dep" form="olt-form1" class="olt-value olt-input" id="olt-dep" value="1" />
+
+        <div>
+            <label for="olt-mpou">Masse poutre (kg)</label>
+        </div>
+        <input type="text" name="olt-mpou" form="olt-form1" class="olt-value olt-input" id="olt-mpou" value="1" />
+
+
+        <!--
+            Densité bois	8,3
+            Pour info :	
+            Volume (m3)	6,00E-05
+            Moment quadratique	8,33E-10
+            Force appliquée	4,905
+            Module de Young calculé (GPa) :	15,33
+            Module spécifique 	1,84
+        -->
+        <div>
+            Densité bois
+        </div>
+        <div class="olt-value olt-result" id="olt-dboi" value="1">8,3</div>
+
+        <h2>Pour info : </h2>
+
+        <div>
+            Volume (m3)
+        </div>
+        <div class="olt-value olt-result" id="olt-vol" value="1">6,00E-05</div>
+
+        <div>
+            Moment quadratique
+        </div>
+        <div class="olt-value olt-result" id="olt-momq" value="1">8,33E-10</div>
+
+        <div>
+            Force appliquée
+        </div>
+        <div class="olt-value olt-result" id="olt-fapp" value="1">4,905</div>
+
+        <div>
+            Module de Young calculé (GPa) :
+        </div>
+        <div class="olt-value olt-result" id="olt-myouc" value="1">15,33</div>
+
+        <div>
+            Module spécifique
+        </div>
+        <div class="olt-value olt-result" id="olt-mspec" value="1">1,84</div>
+    </form>
+
+
+    <button type="submit" form="olt-form1"></button>
+</div>
