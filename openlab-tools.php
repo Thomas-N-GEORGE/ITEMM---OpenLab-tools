@@ -13,13 +13,19 @@ Author: Thomas GEORGE for ITEMM / OpenLab
 
 // functions to enqueue Stylesheets and Scripts
 function olt_styles() {
-    wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );
-    wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );                      
+    // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );
+    // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );     
+
+    wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' );
+    wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' );                      
 }
 
 function olt_scripts() {
-    wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
-    wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/l_i_script.js');                      
+    // wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
+    // wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/l_i_script.js');                      
+    
+    wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
+    wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/f_3_script.js');                      
 }
 
 /**
@@ -38,7 +44,8 @@ function olt_app() {
 
 
     // return the HTML content as a string
-    include_once plugin_dir_path( __FILE__ ) . 'includes/lames_idiophones.html';
+    // include_once plugin_dir_path( __FILE__ ) . 'includes/lames_idiophones.html';
+    include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_3_points.html';
 
     return ob_get_clean();
 }
