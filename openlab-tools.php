@@ -13,13 +13,13 @@ Author: Thomas GEORGE for ITEMM / OpenLab
 
 // functions to enqueue Stylesheets and Scripts
 function olt_styles() {
-    wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/style.css' );
-    wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/style.css' );                      
+    wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );
+    wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );                      
 }
 
 function olt_scripts() {
-    wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/script.js', array('jquery'),'1.0', true);
-    wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/script.js');                      
+    wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
+    wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/l_i_script.js');                      
 }
 
 /**
