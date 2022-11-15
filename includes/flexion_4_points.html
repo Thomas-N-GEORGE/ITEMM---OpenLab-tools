@@ -1,0 +1,146 @@
+<div class="olt-container">
+    <!-- <div class="olt-wrapper"> -->
+    <h1 class="olt-title">FLEXION 4 POINTS</h1>
+
+    <!--***** DATA INPUT *****-->
+    <h2> À remplir : </h2>
+
+    <form id="olt-form1" action="">
+
+        <h2>Métrologie : </h2>
+        <!--Base de la poutre b (m) 	0,104-->
+        <div>
+            <label for="olt-base">Base de la poutre b (m)</label>
+        </div>
+        <input type="text" name="olt-base" form="olt-form1" class="olt-value olt-input" id="olt-base" value="1" />
+
+        <!--Hauteur de la poutre h (m)	0,163-->
+        <div>
+            <label for="olt-haut">Hauteur de la poutre h (m)</label>
+        </div>
+        <input type="text" name="olt-haut" form="olt-form1" class="olt-value olt-input" id="olt-haut" value="1" />
+
+        <!--Longueur totale poutre (m)	3,168-->
+        <div>
+            <label for="olt-ltot">Longueur totale poutre (m)</label>
+        </div>
+        <input type="text" name="olt-ltot" form="olt-form1" class="olt-value olt-input" id="olt-ltot" value="1" />
+
+        <!--Masse de la poutre (kg)	29,65-->
+        <div>
+            <label for="olt-mpou">Masse de la poutre (kg)</label>
+        </div>
+        <input type="text" name="olt-mpou" form="olt-form1" class="olt-value olt-input" id="olt-mpou" value="1" />
+
+        <h2>Expérience : </h2>
+        <!--Longueur entre les deux appuis L (m)	2,5-->
+        <div>
+            <label for="olt-l2app">Longueur entre les deux appuis (L)</label>
+        </div>
+        <input type="text" name="olt-l2app" form="olt-form1" class="olt-value olt-input" id="olt-l2app" value="1" />
+
+        <!--Distance entre application force l (m)	1-->
+        <div>
+            <label for="olt-dappf">Distance entre application force l (m)</label>
+        </div>
+        <input type="text" name="olt-dappf" form="olt-form1" class="olt-value olt-input" id="olt-dappf" value="1" />
+
+        <!--Distance appuis / force a (m)	0,75-->
+        <div>
+            <label for="olt-dappfa">Distance appuis / force a (m)</label>
+        </div>
+        <input type="text" name="olt-dappfa" form="olt-form1" class="olt-value olt-input" id="olt-dappfa" value="1" />
+
+        <h2>Mesures : </h2>
+        <!--Force appliquée zone élastique (N)	30000-->
+        <div>
+            <label for="olt-fel">Force appliquée zone élastique (N)</label>
+        </div>
+        <input type="text" name="olt-fel" form="olt-form1" class="olt-value olt-input" id="olt-fel" value="1" />
+
+        <!--Flèche au centre zone élastique (m)	0,02-->
+        <div>
+            <label for="olt-flel">Flèche au centre zone élastique (m)</label>
+        </div>
+        <input type="text" name="olt-flel" form="olt-form1" class="olt-value olt-input" id="olt-flel" value="1" />
+
+        <!-- Force maximale avant rupture  (N)	48300 -->
+        <div>
+            <label for="olt-fmax">Force maximale avant rupture (N)</label>
+        </div>
+        <input type="text" name="olt-fmax" form="olt-form1" class="olt-value olt-input" id="olt-fmax" value="1" />
+
+        <!-- Flèche maximale avant rupture (m)	0,034 -->
+        <div>
+            <label for="olt-flmax">Flèche maximale avant rupture (m)</label>
+        </div>
+        <input type="text" name="olt-flmax" form="olt-form1" class="olt-value olt-input" id="olt-flmax" value="1" />
+    </form>
+    <button type="submit" form="olt-form1"></button>
+
+
+    <!--***** RESULTS OF CALCULATIONS *****-->
+    <h2>Caractéristiques physiques : </h2>
+    <!--Densité bois [-]	0,552-->
+    <div>
+        Densité bois
+    </div>
+    <div class="olt-value olt-result" id="olt-dboi" value="1">0,552</div>
+
+    <!-- Volume (m3)	5,37E-02-->
+    <div>
+        Volume (m3)
+    </div>
+    <div class="olt-value olt-result" id="olt-vol" value="1">5,37E-02</div>
+
+    <!-- Moment quadratique (m4)	3,75E-05-->
+    <div>
+        Moment quadratique
+    </div>
+    <div class="olt-value olt-result" id="olt-momq" value="1">3,75E-05</div>
+
+    <h2>Caractéristiques mécaniques : </h2>
+
+    <!-- Contrainte zone élastique (Pa)	2,44E+07-->
+    <div>
+        Contrainte zone élastique (Pa)
+    </div>
+    <div class="olt-value olt-result" id="olt-czel" value="1">2,44E+07</div>
+
+    <!-- Déformation zone élastique (-)	0,24% -->
+    <div>
+        Déformation zone élastique (-)
+    </div>
+    <div class="olt-value olt-result" id="olt-defzel" value="1">0,24%</div>
+
+    <!-- Module de Young (MPa)	1,03E+10-->
+    <div>
+        Module de Young (MPa)
+    </div>
+    <div class="olt-value olt-result" id="olt-myou" value="1">1,03E+10</div>
+
+    <!-- Module spécifique (GPa.g-1.cm3)	1,87E+10 -->
+    <div>
+        Module spécifique
+    </div>
+    <div class="olt-value olt-result" id="olt-mspec" value="1">1,84</div>
+
+    <h2>À rupture : </h2>
+    <!-- Contrainte max (Pa)	3,93E+07 -->
+    <div>
+        Contrainte max (Pa)
+    </div>
+    <div class="olt-value olt-result" id="olt-cmax" value="1">3,93E+07</div>
+
+    <!-- Déformation maximale (-)	0,40% -->
+    <div>
+        Déformation maximale (-)
+    </div>
+    <div class="olt-value olt-result" id="olt-defmax" value="1">0,40%</div>
+
+    <!-- Moment flexion maximal (N.m)	1,81E+04 -->
+    <div>
+        Moment flexion maximal (N.m)
+    </div>
+    <div class="olt-value olt-result" id="olt-momax" value="1">1,81E+04</div>
+</div>

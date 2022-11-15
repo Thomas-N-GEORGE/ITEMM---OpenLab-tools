@@ -21,16 +21,25 @@ const numConstants = {
 const fields = [
     "base",
     "haut",
-    "l2app",
     "ltot",
-    "mcen",
-    "dep",
+    "mpou",
+    "l2app",
+    "dappf",
+    "dappfa",
+    "fel",
+    "flel",
+    "fmax",
+    "flmax",
     "dboi",
     "vol",
     "momq",
-    "fapp",
-    "myouc",
+    "czel",
+    "defzel",
+    "myou",
     "mspec",
+    "cmax",
+    "defmax",
+    "momax"
 ];
 
 // no conflict mode in jQuery
@@ -78,23 +87,43 @@ $j(document).ready(function () {
     }
 
     function calcDBois() {
-        data.dboi = (data.mcen / data.vol) / 1000;
+        data.dboi = (data.mpou / data.vol) / 1000;
     }
 
     function calcMomq() {
         data.momq = data.base * Math.pow(data.haut, 3) / 12;
     }
 
-    function calcFapp() {
-        data.fapp = data.mcen * 9.81;
+    function calcCzel() {
+        // =(3*C16*C14)/(C7*C8*C8)
+        data.czel = 3 * data.fel * data.dappfa / (data.base * data.haut * data.haut);
     }
 
-    function calcMyouc() {
-        data.myouc = ((data.fapp * Math.pow(data.l2app, 3)) / (48 * data.dep * data.momq)) / 1000000000;
+    function calcDefzel() {
+        data.defzel = data.flel / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+    }
+
+    function calcMyou() {
+        // =((8*C16*C12*C12*C12)/(96*C17*C24))*(C14/C12)*((3*((C14+C13/2)/C12)-3*(((C14+C13/2)*(C14+C13/2))/(C12*C12))-((C14*C14)/(C12*C12))))
+        data.myou = ((8 * data.fel * Math.pow(data.l2app, 3) / (96 * data.flel * data.momq)) * (data.dappfa / data.l2app) * ((3 * ((data.dappfa + data.dappf / 2) / data.l2app) - 3 * (((data.dappfa + data.dappf / 2) * (data.dappfa + data.dappf / 2)) / (data.l2app * data.l2app)) - ((data.dappfa * data.dappfa) / (data.l2app * data.l2app)))));
     }
 
     function calcMspec() {
-        data.mspec = data.myouc / data.dboi;
+        data.mspec = data.myou / data.dboi;
+    }
+
+    function calcCmax() {
+        // =(3*C18*C14)/(C7*C8*C8)
+        data.cmax = 3 * data.fmax * data.dappfa / (data.base * data.haut * data.haut);
+    }
+    
+    function calcDefmax() {
+        // =(C19)/((3*C12*C12-4*C14*C14)/(12*C8))
+        data.defmax = data.flmax / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+    }
+
+    function calcMomax() {
+        data.momax = data.fmax * data.dappfa / 2;
     }
 
     // global 
@@ -102,9 +131,13 @@ $j(document).ready(function () {
         calcVol();
         calcDBois();
         calcMomq();
-        calcFapp();
-        calcMyouc();
+        calcCzel();
+        calcDefzel();
+        calcMyou();
         calcMspec();
+        calcCmax();
+        calcDefmax();
+        calcMomax();
     }
 
     console.log("it's working !");
