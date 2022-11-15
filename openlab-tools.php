@@ -34,25 +34,49 @@ function olt_scripts() {
     wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/f_4_script.js');                      
 }
 
+function include_html_file($olt_tool) {
+    switch ($olt_tool) {
+        case "lames_idiophones":
+            include_once plugin_dir_path( __FILE__ ) . 'includes/lames_idiophones.html';
+            break;
+        case "flexion_3_points":
+            include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_3_points.html';
+            break;
+        case "flexion_4_points":
+            include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_4_points.html';
+            break;
+        default:
+            echo "
+                    <p>
+                        Can't find the tool... </br>
+                        Please check tool attribute in shortcode :</br>
+                        [openlab-tools tool=\"the_tool_you_want_to_display\"]
+                    <p>
+            ";
+      }
+}
+
 /**
  * The olt_app is loaded inside a div.
  * We can use it on the admin page doing the sortcode [openlab-tools]
  * @return string|false
  */
 
-function olt_app() {
+function olt_app($atts = array()) {
     
     ob_start();
 
-    // enqueue .CSS & .JS
+    $olt_tool = $atts["tool"];
+
+    // enqueue chosen .CSS & .JS
     olt_styles();
     olt_scripts();
 
 
-    // return the HTML content as a string
-    // include_once plugin_dir_path( __FILE__ ) . 'includes/lames_idiophones.html';
-    // include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_3_points.html';
-    include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_4_points.html';
+    // include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_4_points.html';
+    
+    // return the chosen HTML content as a string
+    include_html_file($olt_tool);
 
     return ob_get_clean();
 }
