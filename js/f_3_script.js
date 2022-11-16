@@ -90,6 +90,7 @@ $j(document).ready(function () {
     }
 
     function calcMyouc() {
+        // =(C17*C8*C8*C8)/(48*C11*C16)/1000000000
         data.myouc = ((data.fapp * Math.pow(data.l2app, 3)) / (48 * data.dep * data.momq)) / 1000000000;
     }
 
