@@ -62,6 +62,7 @@ function load_tool($tool) {
                         \"lames_idiophones\"</br>
                         \"flexion_3_points\"</br>
                         \"flexion_4_points\"</br>
+                        \"poutres\"</br>
                     <p>
             ";
       }

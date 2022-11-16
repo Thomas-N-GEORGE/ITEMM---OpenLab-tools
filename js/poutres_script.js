@@ -95,17 +95,17 @@ $j(document).ready(function () {
     }
 
     function calcMvol() {
-        data.dboi = (data.mass / data.vol);
+        data.mvol = (data.mass / data.vol);
     }
 
     function calcI1() {
         // =C4*C5*C5*C5/12
-        data.i1 = data.larg * Math.pow(data.epai, 3);
+        data.i1 = data.larg * Math.pow(data.epai, 3) / 12;
     }
 
     function calcGamma() {
         // =C4*C5*C5*C5*((1/3-0,21*(C5/C4)*(1-(C5*C5*C5*C5)/(12*C4*C4*C4*C4))))
-        data.gamma = data.base * Math.pow(data.haut, 3) * ((1 / 3 - 0.21 *(data.epai / data.larg) * (1 - (Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4))))));
+        data.gamma = data.larg * Math.pow(data.epai, 3) * ((1 / 3 - 0.21 * (data.epai / data.larg) * (1 - (Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4))))));
     }
 
     function calcJ() {
@@ -120,56 +120,102 @@ $j(document).ready(function () {
 
     function calcK() {
         // =(C4*C5*C5*C5/16)/(16/3-3,36*(C5/C4)*(1-((C5*C5*C5*C5/(12*C4*C4*C4*C4)))))
-        data.k = (data.base * Math.pow(data.haut, 3)) / 16 / (16 / 3 - 3.36 * (data.epai / data.larg * (1 - Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4)))));
-    }
-
-    // CONTINUE HERE ====
-
-
-    function calcCzel() {
-        // =(3*C16*C14)/(C7*C8*C8)
-        data.czel = 3 * data.fel * data.dappfa / (data.base * data.haut * data.haut);
-    }
-
-    function calcDefzel() {
-        data.defzel = data.flel / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+        data.k = (data.larg * Math.pow(data.epai, 3)) / 16 / (16 / 3 - 3.36 * (data.epai / data.larg * (1 - Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4)))));
     }
 
     function calcMyou() {
-        // =((8*C16*C12*C12*C12)/(96*C17*C24))*(C14/C12)*((3*((C14+C13/2)/C12)-3*(((C14+C13/2)*(C14+C13/2))/(C12*C12))-((C14*C14)/(C12*C12))))
-        data.myou = ((8 * data.fel * Math.pow(data.l2app, 3) / (96 * data.flel * data.momq)) * (data.dappfa / data.l2app) * ((3 * ((data.dappfa + data.dappf / 2) / data.l2app) - 3 * (((data.dappfa + data.dappf / 2) * (data.dappfa + data.dappf / 2)) / (data.l2app * data.l2app)) - ((data.dappfa * data.dappfa) / (data.l2app * data.l2app)))));
-    }
-
-    function calcMspec() {
-        data.mspec = data.myou / data.dboi;
-    }
-
-    function calcCmax() {
-        // =(3*C18*C14)/(C7*C8*C8)
-        data.cmax = 3 * data.fmax * data.dappfa / (data.base * data.haut * data.haut);
+        // =(F3*F3*C8*C4*C5*C3*C3*C3*C3*4*3,1416*3,1416)/(C11*C12*C12*C12*C12)/1000000000
+        data.myou = (data.freqflex * data.freqflex * data.mvol * data.larg * data.epai * Math.pow(data.long, 4) * 4 * Math.PI * Math.PI) / (data.i1 * Math.pow(data.knl, 4)) / 1000000000;
     }
     
-    function calcDefmax() {
-        // =(C19)/((3*C12*C12-4*C14*C14)/(12*C8))
-        data.defmax = data.flmax / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+    function calcMyouspe() {
+        // =F7/(C8/1000)
+        data.myouspe = data.myou / (data.mvol / 1000);
+    }
+    
+    function calcCond() {
+        // =SQRT((F7*1000000000*(1-0,3))/(C8*(1+0,3)*(1-2*0,3)))
+        data.cond = Math.sqrt(((data.myou * 1000000000) * (1 - 0.3)) / (data.mvol * (1 + 0.3) * (1 - 2 * 0.3)));
+    }
+    
+    function calcCondsimpl() {
+        // =SQRT((F7*1000000000)/(C8))
+        data.condsimpl = Math.sqrt((data.myou * 1000000000) / (data.mvol));
     }
 
-    function calcMomax() {
-        data.momax = data.fmax * data.dappfa / 2;
+    function calcCphas() {
+        // =(((F7*1000000000*C11)/(C8*(C5*C4)))^0,25)*SQRT(2*PI()*F3)
+        data.cphas = (Math.pow(((data.myou * 1000000000 * data.i1) / (data.mvol * (data.epai * data.larg))), 0.25) * Math.sqrt(2 * Math.PI * data.freqflex));
+    }
+    
+    function calcLonde() {
+        // =F16/F3
+        data.londe = data.cphas / data.freqflex;
+    }
+    
+    function calcRdens() {
+        // =C8/1000
+        data.rdens = data.mvol / 1000;
+    }
+
+    function calcRel() {
+        // =(13000+45000*(C21-0,45))/1000
+        data.rel = (13000 + 45000 * (data.rdens - 0.45)) / 1000;
+    }
+    
+    function calcFdens() {
+        // =C8/1000
+        data.fdens = data.mvol / 1000;
+    }
+    
+    function calcFel() {
+        // =(14200+21100*(C22-0,65))/1000
+        data.fel = (14200 + 21100 * (data.fdens - 0.65)) / 1000;
+    }
+    
+    function calcPdens() {
+        // =C8/1000
+        data.pdens = data.mvol / 1000;
+    }
+
+    function calcRgui() {
+        // =((C12*C12)/(C3*C3*2*3,1416))*SQRT((D21*1000000000*C11)/(C8*C4*C5))
+        data.rgui = ((data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)) * Math.sqrt((data.rel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai));
+    }
+    
+    function calcFgui() {
+        // =((C12*C12)/(C3*C3*2*3,1416))*SQRT((D22*1000000000*C11)/(C8*C4*C5))
+        data.fgui = ((data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)) * Math.sqrt((data.fel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai));
+    }
+    
+    function calcPers() {
+        // =((C12*C12)/(C3*C3*2*3,1416))*SQRT((D23*1000000000*C11)/(C8*C4*C5))
+        data.pers = ((data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)) * Math.sqrt((data.pel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai));
     }
 
     // global 
     function calcChart() {
         calcVol();
-        calcDBois();
-        calcMomq();
-        calcCzel();
-        calcDefzel();
+        calcMvol();
+        calcI1();
+        calcGamma();
+        calcJ();
+        calcI2();
+        calcK();
         calcMyou();
-        calcMspec();
-        calcCmax();
-        calcDefmax();
-        calcMomax();
+        calcMyouspe();
+        calcCond();
+        calcCondsimpl();
+        calcCphas();
+        calcLonde();
+        calcRdens();
+        calcRel();
+        calcFdens();
+        calcFel();
+        calcPdens();
+        calcRgui();
+        calcFgui();
+        calcPers();
     }
 
     console.log("it's working !");
