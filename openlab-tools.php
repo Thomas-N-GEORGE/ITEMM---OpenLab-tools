@@ -42,7 +42,16 @@ function load_tool($tool) {
             // html                    
             include_once plugin_dir_path( __FILE__ ) . 'includes/flexion_4_points.html';
             break;
-        case "" :
+        case "poutres" :
+            // css styles
+            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' ); 
+            // js scripts
+            wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
+            wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/poutres_script.js');
+            // html                    
+            include_once plugin_dir_path( __FILE__ ) . 'includes/poutres.html';
+            break;
         default:
             echo "
                     <p>
