@@ -52,6 +52,16 @@ function load_tool($tool) {
             // html                    
             include_once plugin_dir_path( __FILE__ ) . 'includes/poutres.html';
             break;
+        case "plaques_woodhouse" :
+            // css styles
+            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' ); 
+            // js scripts
+            wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
+            wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/p_w_script.js');
+            // html                    
+            include_once plugin_dir_path( __FILE__ ) . 'includes/plaques_woodhouse.html';
+            break;
         default:
             echo "
                     <p>
@@ -63,6 +73,7 @@ function load_tool($tool) {
                         \"flexion_3_points\"</br>
                         \"flexion_4_points\"</br>
                         \"poutres\"</br>
+                        \"plaques_woodhouse\"</br>
                     <p>
             ";
       }
