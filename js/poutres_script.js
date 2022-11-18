@@ -28,7 +28,7 @@ const fields = [
     "i1",
     "knl",
     "gamma",
-    "j",
+    // "j",
     "i2",
     "k",
     "freqflex",
@@ -111,11 +111,6 @@ $j(document).ready(function () {
     function calcGamma() {
         // =C4*C5*C5*C5*((1/3-0,21*(C5/C4)*(1-(C5*C5*C5*C5)/(12*C4*C4*C4*C4))))
         data.gamma = data.larg * Math.pow(data.epai, 3) * ((1 / 3 - 0.21 * (data.epai / data.larg) * (1 - (Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4))))));
-    }
-
-    function calcJ() {
-        // =((C4*C5)/12)*(C4*C4+C5*C5)
-        data.j = (data.larg * data.epai / 12) * (data.larg * data.larg + data.epai * data.epai);
     }
 
     function calcI2() {
@@ -204,7 +199,6 @@ $j(document).ready(function () {
         calcMvol();
         calcI1();
         calcGamma();
-        calcJ();
         calcI2();
         calcK();
         calcMyou();
