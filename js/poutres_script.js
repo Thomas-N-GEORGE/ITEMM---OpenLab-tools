@@ -12,7 +12,7 @@
 const numConstants = {
     nuxy: 0.3,
     nuyx: 0.03,
-    knl: 4.73,
+    //knl: 4.73,
 }
 
 // ===== Data fields in poutres tool ===== 
@@ -27,8 +27,9 @@ const fields = [
     "nuyx",
     "i1",
     "knl",
+    "knldisplay",
     "gamma",
-    "j",
+    // "j",
     "i2",
     "k",
     "freqflex",
@@ -85,7 +86,17 @@ $j(document).ready(function () {
 
     function displayOutput(data) {
         for (let field of fields) {
-            domElements[field].text(data[field]);
+            // display anything but select field
+            if (field != "knl") {
+                // domElements[field].text(data[field]);
+                // Format numerical output : 
+                if (Math.abs(data[field]) >= 10000 || Math.abs(data[field]) <= 0.1) {
+                    domElements[field].text(data[field].toExponential(3));
+                } else {
+                    domElements[field].text(data[field].toFixed(3));
+                }
+            }
+
             //console.log(domElements[field].val());
         }
     }
@@ -108,14 +119,13 @@ $j(document).ready(function () {
         data.i1 = data.larg * Math.pow(data.epai, 3) / 12;
     }
 
+    function calcKnldisplay() {
+        data.knldisplay = data.knl;
+    }
+
     function calcGamma() {
         // =C4*C5*C5*C5*((1/3-0,21*(C5/C4)*(1-(C5*C5*C5*C5)/(12*C4*C4*C4*C4))))
         data.gamma = data.larg * Math.pow(data.epai, 3) * ((1 / 3 - 0.21 * (data.epai / data.larg) * (1 - (Math.pow(data.epai, 4) / (12 * Math.pow(data.larg, 4))))));
-    }
-
-    function calcJ() {
-        // =((C4*C5)/12)*(C4*C4+C5*C5)
-        data.j = (data.larg * data.epai / 12) * (data.larg * data.larg + data.epai * data.epai);
     }
 
     function calcI2() {
@@ -185,7 +195,11 @@ $j(document).ready(function () {
 
     function calcRgui() {
         // =((C12*C12)/(C3*C3*2*3,1416))*SQRT((D21*1000000000*C11)/(C8*C4*C5))
-        data.rgui = ((data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)) * Math.sqrt((data.rel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai));
+        data.rgui = (
+            (data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)
+        ) * Math.sqrt(
+            (data.rel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai)
+        );
     }
 
     function calcFgui() {
@@ -203,8 +217,8 @@ $j(document).ready(function () {
         calcVol();
         calcMvol();
         calcI1();
+        calcKnldisplay();
         calcGamma();
-        calcJ();
         calcI2();
         calcK();
         calcMyou();
