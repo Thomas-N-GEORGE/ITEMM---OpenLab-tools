@@ -10,14 +10,10 @@
 
 // ===== Numerical constants =====
 const numConstants = {
-    knl1: 4.73,
-    knl2: 4.73,
-    aire2: 0.00004,
-    mom2: 1.33E-11,
-    vito2: 130.0271552,
+
 }
 
-// ===== Data fields in lames_idiophones tool ===== 
+// ===== Data fields in flexion_4_points tool ===== 
 const fields = [
     "base",
     "haut",

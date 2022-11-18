@@ -15,7 +15,7 @@ const numConstants = {
     knl: 4.73,
 }
 
-// ===== Data fields in lames_idiophones tool ===== 
+// ===== Data fields in poutres tool ===== 
 const fields = [
     "long",
     "larg",

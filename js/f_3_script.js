@@ -1,5 +1,5 @@
 /**
- * This is the script file for the FLEXION 4 POINTS tool 
+ * This is the script file for the FLEXION 3 POINTS tool 
  * 
  * Basically it binds entry input and result output in the HTML.
  * 
@@ -10,14 +10,10 @@
 
 // ===== Numerical constants =====
 const numConstants = {
-    knl1: 4.73,
-    knl2: 4.73,
-    aire2: 0.00004,
-    mom2: 1.33E-11,
-    vito2: 130.0271552,
+
 }
 
-// ===== Data fields in lames_idiophones tool ===== 
+// ===== Data fields in flexion_3_points tool ===== 
 const fields = [
     "base",
     "haut",
