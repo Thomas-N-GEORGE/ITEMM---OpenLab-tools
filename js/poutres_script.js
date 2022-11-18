@@ -27,6 +27,7 @@ const fields = [
     "nuyx",
     "i1",
     "knl",
+    "knldisplay",
     "gamma",
     // "j",
     "i2",
@@ -116,6 +117,10 @@ $j(document).ready(function () {
     function calcI1() {
         // =C4*C5*C5*C5/12
         data.i1 = data.larg * Math.pow(data.epai, 3) / 12;
+    }
+
+    function calcKnldisplay() {
+        data.knldisplay = data.knl;
     }
 
     function calcGamma() {
@@ -212,6 +217,7 @@ $j(document).ready(function () {
         calcVol();
         calcMvol();
         calcI1();
+        calcKnldisplay();
         calcGamma();
         calcI2();
         calcK();
