@@ -21,6 +21,7 @@ const fields = [
     "ltot",
     "mcen",
     "dep",
+    "mpou",
     "dboi",
     "vol",
     "momq",
@@ -38,6 +39,7 @@ $j(document).ready(function () {
     // our DOM elements as jquery objects :
     const domElements = {};
 
+    // we populate it
     fields.forEach((field) => {
         domElements[field] = $j("#olt-" + field);
     });
@@ -52,7 +54,9 @@ $j(document).ready(function () {
                 // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
                 data[field] = numConstants[field];
             } else {
-                data[field] = Number(domElements[field].val());
+                // data[field] = Number(domElements[field].val());
+                data[field] = (domElements[field].val()).replaceAll(",", ".");
+                data[field] = Number(data[field]);
             }
         });
     }
@@ -66,15 +70,17 @@ $j(document).ready(function () {
         }
     }
 
-    // ===== Calculations =====
+    //************************
+    //***** Calculations *****
+    //************************
     // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
-    
+
     function calcVol() {
-        data.vol =  data.ltot * data.base * data.haut;
+        data.vol = data.ltot * data.base * data.haut;
     }
 
     function calcDBois() {
-        data.dboi = (data.mcen / data.vol) / 1000;
+        data.dboi = (data.mpou / data.vol) / 1000;
     }
 
     function calcMomq() {
