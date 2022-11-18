@@ -47,6 +47,7 @@ $j(document).ready(function () {
     // our DOM elements as jquery objects :
     const domElements = {};
 
+    // we populate it
     fields.forEach((field) => {
         domElements[field] = $j("#olt-" + field);
     });
@@ -61,7 +62,9 @@ $j(document).ready(function () {
                 // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
                 data[field] = numConstants[field];
             } else {
-                data[field] = Number(domElements[field].val());
+                // data[field] = Number(domElements[field].val());
+                data[field] = (domElements[field].val()).replaceAll(",", ".");
+                data[field] = Number(data[field]);
             }
         });
     }
@@ -75,11 +78,13 @@ $j(document).ready(function () {
         }
     }
 
-    // ===== Calculations =====
+    //************************
+    //***** Calculations *****
+    //************************
     // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
-    
+
     function calcVol() {
-        data.vol =  data.ltot * data.base * data.haut;
+        data.vol = data.ltot * data.base * data.haut;
     }
 
     function calcDBois() {
@@ -96,7 +101,7 @@ $j(document).ready(function () {
     }
 
     function calcDefzel() {
-        data.defzel = data.flel / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+        data.defzel = data.flel / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa) / (12 * data.haut));
     }
 
     function calcMyou() {
@@ -112,10 +117,10 @@ $j(document).ready(function () {
         // =(3*C18*C14)/(C7*C8*C8)
         data.cmax = 3 * data.fmax * data.dappfa / (data.base * data.haut * data.haut);
     }
-    
+
     function calcDefmax() {
         // =(C19)/((3*C12*C12-4*C14*C14)/(12*C8))
-        data.defmax = data.flmax / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa)/(12 * data.haut));
+        data.defmax = data.flmax / ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa) / (12 * data.haut));
     }
 
     function calcMomax() {

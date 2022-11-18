@@ -78,6 +78,7 @@ $j(document).ready(function () {
     // our DOM elements as jquery objects :
     const domElements = {};
 
+    // we populate it
     fields.forEach((field) => {
         domElements[field] = $j("#olt-" + field);
     });
@@ -93,7 +94,9 @@ $j(document).ready(function () {
                 // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
                 data[field] = numConstants[field];
             } else {
-                data[field] = Number(domElements[field].val());
+                // data[field] = Number(domElements[field].val());
+                data[field] = (domElements[field].val()).replaceAll(",", ".");
+                data[field] = Number(data[field]);
             }
         });
     }
@@ -107,9 +110,9 @@ $j(document).ready(function () {
         }
     }
 
-    //**************************
-    //****** Calculations ******
-    //**************************
+    //************************
+    //***** Calculations *****
+    //************************
     // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
 
     // Renseigner les dimensions des plaques (upper part of chart)

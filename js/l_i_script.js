@@ -55,10 +55,10 @@ $j(document).ready(function () {
     // our DOM elements as jquery objects :
     const domElements = {};
 
+    // we populate it
     fields.forEach((field) => {
         domElements[field] = $j("#olt-" + field);
     });
-
 
     // our data values for calculation
     const data = {};
@@ -69,42 +69,14 @@ $j(document).ready(function () {
                 // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
                 data[field] = numConstants[field];
             } else {
-                data[field] = Number(domElements[field].val());
+                // data[field] = Number(domElements[field].val());
+                data[field] = (domElements[field].val()).replaceAll(",", ".");
+                data[field] = Number(data[field]);
             }
         });
     }
-    // We call it a first time
+    // We call it a first time, fetches default values
     retrieveData();
-
-    // ===== value display =====
-    /* function displayOutput(chart1, chart2) {
-
-        $long1.val() = chart1.long1;
-        $knl1.val() = chart1.knl1;
-        $base1.val() = chart1.base1;
-        $haut1.val() = chart1.haut1;
-        $vol1.val() = chart1.vol1;
-        $mvol1.val() = chart1.mvol1;
-        $aire1.val() = chart1.aire1;
-        $mom1.val() = chart1.mom1;
-        $mass1.val() = chart1.mass1;
-        $myou1.val() = chart1.myou1;
-        $freq1.val() = chart1.freq1;
-        $vito1.val() = chart1.vito1;
-
-        $long2.val() = chart2.long2;
-        $knl2.val() = chart2.knl2;
-        $base2.val() = chart2.base2;
-        $haut2.val() = chart2.haut2;
-        $vol2.val() = chart2.vol2;
-        $mvol2.val() = chart2.mvol2;
-        $aire2.val() = chart2.aire2;
-        $mom2.val() = chart2.mom2;
-        $mass2.val() = chart2.mass2;
-        $myou2.val() = chart2.myou2;
-        $freq2.val() = chart2.freq2;
-        $vito2.val() = chart2.vito1;
-    } */
 
     function displayOutput(data) {
         for (let field of fields) {
@@ -113,8 +85,11 @@ $j(document).ready(function () {
         }
     }
 
-    // ===== Calculations =====
+    //************************
+    //***** Calculations *****
+    //************************
     // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
+
     // chart 1
     function calcFreq1(long, knl, aire, mvol, mom, myou) {
         console.log(long, knl, aire, mvol, mom, myou);
@@ -162,6 +137,7 @@ $j(document).ready(function () {
         //(((C24/1000000000)/(C20*C18))^0,25)*SQRT(2*PI()*C25)
     }
 
+    // global for chart2
     function calcChart2() {
         data.long2 = calcLong2(data.knl2, data.freq2, data.myou2, data.mom2, data.aire2, data.mvol2);
         console.log(data.long2);
@@ -178,11 +154,9 @@ $j(document).ready(function () {
     }
 
 
-
     console.log("it's working !");
     // console.log("it's working 2 !");
     // console.log("it's working 3 !");
-
 
     // Form submission
     $j("form").submit((e) => {
@@ -192,20 +166,10 @@ $j(document).ready(function () {
         console.log("domElements : ", domElements);
         retrieveData();
         console.log("data", data);
-        //     // calulate 
+        // calulate 
         calcChart1();
         calcChart2();
-        //     // display output
+        // display output
         displayOutput(data);
     });
 });
-
-// inputForm.addEventListener("submit", (e) => {
-//     // console.log("entered data ?...");
-//     // retrieve data, calulate and display output :
-//     celsInput = celsius.value;
-//     if (checkNumInput(celsInput)) {
-//         // console.log(celsInput);
-//         fahrenheit.innerText = celsToFahr(celsInput).toString();
-//     }
-// });
