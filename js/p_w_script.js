@@ -105,7 +105,13 @@ $j(document).ready(function () {
 
     function displayOutput(data) {
         for (let field of fields) {
-            domElements[field].text(data[field]);
+            // domElements[field].text(data[field]);
+            // Format numerical output : 
+            if (Math.abs(data[field]) >= 10000 || Math.abs(data[field]) <= 0.1) {
+                domElements[field].text(data[field].toExponential(3));
+            } else {
+                domElements[field].text(data[field].toFixed(3));
+            }
             //console.log(domElements[field].val());
         }
     }
