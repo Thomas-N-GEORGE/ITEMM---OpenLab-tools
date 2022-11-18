@@ -12,7 +12,7 @@
 const numConstants = {
     nuxy: 0.3,
     nuyx: 0.03,
-    knl: 4.73,
+    //knl: 4.73,
 }
 
 // ===== Data fields in poutres tool ===== 
@@ -85,7 +85,10 @@ $j(document).ready(function () {
 
     function displayOutput(data) {
         for (let field of fields) {
-            domElements[field].text(data[field]);
+            if (field != "knl") {
+                domElements[field].text(data[field]);
+            } 
+
             //console.log(domElements[field].val());
         }
     }
@@ -180,7 +183,11 @@ $j(document).ready(function () {
 
     function calcRgui() {
         // =((C12*C12)/(C3*C3*2*3,1416))*SQRT((D21*1000000000*C11)/(C8*C4*C5))
-        data.rgui = ((data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)) * Math.sqrt((data.rel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai));
+        data.rgui = (
+            (data.knl * data.knl) / (data.long * data.long * 2 * Math.PI)
+            ) * Math.sqrt(
+                (data.rel * 1000000000 * data.i1) / (data.mvol * data.larg * data.epai)
+            );
     }
 
     function calcFgui() {
