@@ -336,12 +336,12 @@ $j(document).ready(function () {
         data.rf1 = data.elongr * 1000000000 * Math.pow(data.epai, 3) / (12 * (1 - 0.3 * 0.3));
     }
 
-    function calcRf2() { 
+    function calcRf2() {
         //D18 =D4*1000000000*D11*D11*D11/(12*(1-0,3*0,3))
         data.rf2 = data.elargr * 1000000000 * Math.pow(data.epai, 3) / (12 * (1 - 0.3 * 0.3));
     }
 
-    // two last calculations 
+    // two calculations 
     function calcRrigi() {
         //G3 = =(D19/D20)^(0,25)
         data.rrigi = Math.pow((data.d1 / data.d3), 0.25);
@@ -350,6 +350,50 @@ $j(document).ready(function () {
     function calcRgeo() {
         //G5 = D9/D10
         data.rgeo = data.long / data.larg;
+    }
+
+    //Vitesses calculées :
+    function calcC1() {
+        // G9 = SQRT((D3*1000000000*(1-0,3))/(D14*(1+0,3)*(1-2*0,3)))
+        data.c1 = Math.sqrt(
+            data.elongr * 1000000000 * (1 - 0.3) / (data.mvol * (1 + 0.3) * (1 - 2 * 0.3))
+        );
+    }
+
+    function calcC2() {
+        // G10 = =SQRT((D4*1000000000*(1-0,3))/(D14*(1+0,3)*(1-2*0,3)))
+        data.c2 = Math.sqrt(
+            data.elargr * 1000000000 * (1 - 0.3) / (data.mvol * (1 + 0.3) * (1 - 2 * 0.3))
+        );
+    }
+
+    function calcOf1() {
+        // G11 =((((D3*1000000000*D11*D11*D11)/(12*(1-D16*D16)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L4)
+        data.of1 = Math.pow(
+            (
+                data.elongr * 1000000000 * Math.pow(data.epai, 3)
+            ) / (
+                12 * (1 - data.nu21 * data.nu21) / (data.mvol * data.epai)
+            ),
+            0.25
+        ) * Math.sqrt(2 * Math.PI * data.fflex1);
+    }
+
+    function calcOf2() {
+        // G12 =((((D4*1000000000*D11*D11*D11)/(12*(1-D15*D15)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L5)
+        data.of2 = Math.pow(
+            (
+                data.elargr * 1000000000 * Math.pow(data.epai, 3)
+            ) / (
+                12 * (1 - data.nu12 * data.nu12) / (data.mvol * data.epai)
+            ),
+            0.25
+        ) * Math.sqrt(2 * Math.PI * data.fflex2);
+
+    }
+    function calcOcis() {
+        // G13 =0,58*SQRT(D9*D9+D10*D10)*L3
+        data.ocis = 0.58 * Math.sqrt(data.long * data.long + data.larg * data.larg) * data.ftplan;
     }
 
 
@@ -389,7 +433,11 @@ $j(document).ready(function () {
         calcRf2();
         calcRrigi();
         calcRgeo();
-
+        calcC1();
+        calcC2();
+        calcOf1();
+        calcOf2();
+        calcOcis();
     }
 
     console.log("it's working !");
