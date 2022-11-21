@@ -377,24 +377,24 @@ $j(document).ready(function () {
     }
 
     function calcOf1() {
-        // G11 =((((D3*1000000000*D11*D11*D11)/(12*(1-D16*D16)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L4)
+        // G11 =((((D3*1000000000*D11*D11*D11)/(12*(1-D15*D16)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L4)
         data.of1 = Math.pow(
             (
                 data.elongr * 1000000000 * Math.pow(data.epai, 3)
             ) / (
-                12 * (1 - data.nu21 * data.nu21) / (data.mvol * data.epai)
+                12 * (1 - data.nu12 * data.nu21) / (data.mvol * data.epai)
             ),
             0.25
         ) * Math.sqrt(2 * Math.PI * data.fflex1);
     }
 
     function calcOf2() {
-        // G12 =((((D4*1000000000*D11*D11*D11)/(12*(1-D15*D15)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L5)
+        // G12 =((((D4*1000000000*D11*D11*D11)/(12*(1-D16*D15)/(D14*D11)))^(1/4)))*SQRT(2*PI()*L5)
         data.of2 = Math.pow(
             (
                 data.elargr * 1000000000 * Math.pow(data.epai, 3)
             ) / (
-                12 * (1 - data.nu12 * data.nu12) / (data.mvol * data.epai)
+                12 * (1 - data.nu12 * data.nu21) / (data.mvol * data.epai)
             ),
             0.25
         ) * Math.sqrt(2 * Math.PI * data.fflex2);
