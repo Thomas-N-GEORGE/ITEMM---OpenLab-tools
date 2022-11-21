@@ -12,15 +12,19 @@
 .olt-container {
   margin: auto;
   padding: 0;
-  box-sizing: border-box; /* forces the div to keep their size if padding applied */
+  box-sizing: border-box; 
   text-decoration: none;
-  font-size: 62.5%; /* 1rem = 10px, pratique pour le calcul */
+  /* font-size: 62.5%;  */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
   width: 100%;
+}
+
+.olt-table {
+  padding: 5rem 0;
 }
 
 .olt-value {

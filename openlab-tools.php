@@ -11,11 +11,12 @@ Author: Thomas GEORGE for ITEMM / OpenLab
 
 // load CSS style, JS script and return the chosen HTML content as a string
 function load_tool($tool) {
+    wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/olt_style.css' ); 
     switch ($tool) {
         case "lames_idiophones":
             // css styles
-            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );
-            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' ); 
+            // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' );
+            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/l_i_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/l_i_script.js');
@@ -24,8 +25,8 @@ function load_tool($tool) {
             break;
         case "flexion_3_points":
             // css styles
-            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' );
-            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' ); 
+            // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' );
+            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/f_3_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/f_3_script.js');
@@ -34,8 +35,8 @@ function load_tool($tool) {
             break;
         case "flexion_4_points":
             // css styles
-            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/f_4_style.css' );
-            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/f_4_style.css' ); 
+            // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/f_4_style.css' );
+            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/f_4_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/f_4_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/f_4_script.js');
@@ -44,8 +45,8 @@ function load_tool($tool) {
             break;
         case "poutres" :
             // css styles
-            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' );
-            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' ); 
+            // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' );
+            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/poutres_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/poutres_script.js');
@@ -54,8 +55,8 @@ function load_tool($tool) {
             break;
         case "plaques_woodhouse" :
             // css styles
-            wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' );
-            wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' ); 
+            // wp_register_style('olt-style', plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' );
+            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __FILE__ ) . '/css/p_w_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __FILE__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __FILE__ ) . '/js/p_w_script.js');
