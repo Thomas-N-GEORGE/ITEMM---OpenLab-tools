@@ -1,280 +1,363 @@
 <div class="olt-container">
-    <!-- <div class="olt-wrapper"> -->
-    <h1 class="olt-title">FLEXION 4 POINTS</h1>
+  <!-- <div class="olt-wrapper"> -->
+  <h1 class="olt-title">FLEXION 4 POINTS</h1>
 
-    <!--***** DATA INPUT *****-->
-    <h2> À remplir : </h2>
+  <!-- .png illustration uploaded by WP, witch gives us this path to file and can let the WP theme manage its style -->
+  <div class="olt-img-container">
+    <img
+      src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres_flex_4_points.png"
+      alt="illustration poutres flexion 4 points"
+      class="olt-img"
+    />
+  </div>
 
-    <form id="olt-form1" action="">
-        <table>
-            <tr>
-                <td>
-                    <h2>Métrologie : </h2>
-                </td>
-            </tr>
-            <!--Base de la poutre b (m) 	0,104-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-base">Base de la poutre b (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-base" form="olt-form1" class="olt-value olt-input" id="olt-base"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Hauteur de la poutre h (m)	0,163-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-haut">Hauteur de la poutre h (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-haut" form="olt-form1" class="olt-value olt-input" id="olt-haut"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Longueur totale poutre (m)	3,168-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-ltot">Longueur totale poutre (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-ltot" form="olt-form1" class="olt-value olt-input" id="olt-ltot"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Masse de la poutre (kg)	29,65-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-mpou">Masse de la poutre (kg)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-mpou" form="olt-form1" class="olt-value olt-input" id="olt-mpou"
-                        value="1" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Expérience : </h2>
-                </td>
-            </tr>
-            <!--Longueur entre les deux appuis L (m)	2,5-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-l2app">Longueur entre les deux appuis (L)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-l2app" form="olt-form1" class="olt-value olt-input" id="olt-l2app"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Distance entre application force l (m)	1-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-dappf">Distance entre application force l (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-dappf" form="olt-form1" class="olt-value olt-input" id="olt-dappf"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Distance appuis / force a (m)	0,75-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-dappfa">Distance appuis / force a (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-dappfa" form="olt-form1" class="olt-value olt-input" id="olt-dappfa"
-                        value="1" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Mesures : </h2>
-                </td>
-            </tr>
-            <!--Force appliquée zone élastique (N)	30000-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-fel">Force appliquée zone élastique (N)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-fel" form="olt-form1" class="olt-value olt-input" id="olt-fel"
-                        value="1" />
-                </td>
-            </tr>
-            <!--Flèche au centre zone élastique (m)	0,02-->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-flel">Flèche au centre zone élastique (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-flel" form="olt-form1" class="olt-value olt-input" id="olt-flel"
-                        value="1" />
-                </td>
-            </tr>
-            <!-- Force maximale avant rupture  (N)	48300 -->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-fmax">Force maximale avant rupture (N)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-fmax" form="olt-form1" class="olt-value olt-input" id="olt-fmax"
-                        value="1" />
-                </td>
-            </tr>
-            <!-- Flèche maximale avant rupture (m)	0,034 -->
-            <tr>
-                <td>
-                    <div>
-                        <label for="olt-flmax">Flèche maximale avant rupture (m)</label>
-                    </div>
-                </td>
-                <td><input type="text" name="olt-flmax" form="olt-form1" class="olt-value olt-input" id="olt-flmax"
-                        value="1" />
-                </td>
-            </tr>
-        </table>
+  <!--***** DATA INPUT *****-->
+  <h2>À remplir :</h2>
 
-        <table>
-            <!--***** RESULTS OF CALCULATIONS *****-->
-            <tr>
-                <td>
-                    <h2>Caractéristiques physiques : </h2>
-                </td>
-            </tr>
-            <!--Densité bois [-]	0,552-->
-            <tr>
-                <td>
-                    <div>
-                        Densité bois
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-dboi" value="1">0,552</div>
-                </td>
-            </tr>
-            <!-- Volume (m3)	5,37E-02-->
-            <tr>
-                <td>
-                    <div>
-                        Volume (m3)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-vol" value="1">5,37E-02</div>
-                </td>
-            </tr>
-            <!-- Moment quadratique (m4)	3,75E-05-->
-            <tr>
-                <td>
-                    <div>
-                        Moment quadratique
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-momq" value="1">3,75E-05</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>Caractéristiques mécaniques : </h2>
-                </td>
-            </tr>
+  <form id="olt-form1" action="">
+    <table>
+      <tr>
+        <td>
+          <h2>Métrologie :</h2>
+        </td>
+      </tr>
+      <!--Base de la poutre b (m) 	0,104-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-base">Base de la poutre b (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-base"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-base"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Hauteur de la poutre h (m)	0,163-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-haut">Hauteur de la poutre h (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-haut"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-haut"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Longueur totale poutre (m)	3,168-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-ltot">Longueur totale poutre (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-ltot"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-ltot"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Masse de la poutre (kg)	29,65-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-mpou">Masse de la poutre (kg)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-mpou"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mpou"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Expérience :</h2>
+        </td>
+      </tr>
+      <!--Longueur entre les deux appuis L (m)	2,5-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-l2app">Longueur entre les deux appuis (L)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-l2app"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-l2app"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Distance entre application force l (m)	1-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-dappf"
+              >Distance entre application force l (m)</label
+            >
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-dappf"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-dappf"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Distance appuis / force a (m)	0,75-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-dappfa">Distance appuis / force a (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-dappfa"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-dappfa"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Mesures :</h2>
+        </td>
+      </tr>
+      <!--Force appliquée zone élastique (N)	30000-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-fel">Force appliquée zone élastique (N)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-fel"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-fel"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!--Flèche au centre zone élastique (m)	0,02-->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-flel">Flèche au centre zone élastique (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-flel"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-flel"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!-- Force maximale avant rupture  (N)	48300 -->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-fmax">Force maximale avant rupture (N)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-fmax"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-fmax"
+            value="1"
+          />
+        </td>
+      </tr>
+      <!-- Flèche maximale avant rupture (m)	0,034 -->
+      <tr>
+        <td>
+          <div>
+            <label for="olt-flmax">Flèche maximale avant rupture (m)</label>
+          </div>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-flmax"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-flmax"
+            value="1"
+          />
+        </td>
+      </tr>
+    </table>
 
-            <!-- Contrainte zone élastique (Pa)	2,44E+07-->
-            <tr>
-                <td>
-                    <div>
-                        Contrainte zone élastique (Pa)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-czel" value="1">2,44E+07</div>
-                </td>
-            </tr>
-            <!-- Déformation zone élastique (-)	0,24% -->
-            <tr>
-                <td>
-                    <div>
-                        Déformation zone élastique (-)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-defzel" value="1">0,24%</div>
-                </td>
-            </tr>
-            <!-- Module de Young (MPa)	1,03E+10-->
-            <tr>
-                <td>
-                    <div>
-                        Module de Young (MPa)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-myou" value="1">1,03E+10</div>
-                </td>
-            </tr>
-            <!-- Module spécifique (GPa.g-1.cm3)	1,87E+10 -->
-            <tr>
-                <td>
-                    <div>
-                        Module spécifique
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-mspec" value="1">1,84</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>À rupture : </h2>
-                </td>
-            </tr>
-            <!-- Contrainte max (Pa)	3,93E+07 -->
-            <tr>
-                <td>
-                    <div>
-                        Contrainte max (Pa)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-cmax" value="1">3,93E+07</div>
-                </td>
-            </tr>
-            <!-- Déformation maximale (-)	0,40% -->
-            <tr>
-                <td>
-                    <div>
-                        Déformation maximale (-)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-defmax" value="1">0,40%</div>
-                </td>
-            </tr>
-            <!-- Moment flexion maximal (N.m)	1,81E+04 -->
-            <tr>
-                <td>
-                    <div>
-                        Moment flexion maximal (N.m)
-                    </div>
-                </td>
-                <td>
-                    <div class="olt-value olt-result" id="olt-momax" value="1">1,81E+04</div>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <button type="submit" form="olt-form1"></button>
+    <table>
+      <!--***** RESULTS OF CALCULATIONS *****-->
+      <tr>
+        <td>
+          <h2>Caractéristiques physiques :</h2>
+        </td>
+      </tr>
+      <!--Densité bois [-]	0,552-->
+      <tr>
+        <td>
+          <div>Densité bois</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-dboi" value="1">0,552</div>
+        </td>
+      </tr>
+      <!-- Volume (m3)	5,37E-02-->
+      <tr>
+        <td>
+          <div>Volume (m3)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-vol" value="1">
+            5,37E-02
+          </div>
+        </td>
+      </tr>
+      <!-- Moment quadratique (m4)	3,75E-05-->
+      <tr>
+        <td>
+          <div>Moment quadratique</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-momq" value="1">
+            3,75E-05
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Caractéristiques mécaniques :</h2>
+        </td>
+      </tr>
 
+      <!-- Contrainte zone élastique (Pa)	2,44E+07-->
+      <tr>
+        <td>
+          <div>Contrainte zone élastique (Pa)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-czel" value="1">
+            2,44E+07
+          </div>
+        </td>
+      </tr>
+      <!-- Déformation zone élastique (-)	0,24% -->
+      <tr>
+        <td>
+          <div>Déformation zone élastique (-)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-defzel" value="1">
+            0,24%
+          </div>
+        </td>
+      </tr>
+      <!-- Module de Young (MPa)	1,03E+10-->
+      <tr>
+        <td>
+          <div>Module de Young (MPa)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-myou" value="1">
+            1,03E+10
+          </div>
+        </td>
+      </tr>
+      <!-- Module spécifique (GPa.g-1.cm3)	1,87E+10 -->
+      <tr>
+        <td>
+          <div>Module spécifique</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-mspec" value="1">1,84</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>À rupture :</h2>
+        </td>
+      </tr>
+      <!-- Contrainte max (Pa)	3,93E+07 -->
+      <tr>
+        <td>
+          <div>Contrainte max (Pa)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-cmax" value="1">
+            3,93E+07
+          </div>
+        </td>
+      </tr>
+      <!-- Déformation maximale (-)	0,40% -->
+      <tr>
+        <td>
+          <div>Déformation maximale (-)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-defmax" value="1">
+            0,40%
+          </div>
+        </td>
+      </tr>
+      <!-- Moment flexion maximal (N.m)	1,81E+04 -->
+      <tr>
+        <td>
+          <div>Moment flexion maximal (N.m)</div>
+        </td>
+        <td>
+          <div class="olt-value olt-result" id="olt-momax" value="1">
+            1,81E+04
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <button type="submit" form="olt-form1"></button>
 </div>

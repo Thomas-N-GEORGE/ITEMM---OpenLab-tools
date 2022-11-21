@@ -1,5 +1,12 @@
 .olt-title {
-    color: red;
+    /* color: red; */
+}
+
+.olt-img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    padding: 5rem;
 }
 
 .olt-container {
