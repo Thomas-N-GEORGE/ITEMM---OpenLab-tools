@@ -2,12 +2,16 @@
 
 // load CSS style, JS script and return the chosen HTML content as a string
 function load_tool($tool) {
+
+    // css common style sheet for all tools
+    wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/css/olt_style.css');
     wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/olt_style.css' ); 
+    
     switch ($tool) {
         case "lames_idiophones":
-            // css styles
-            // wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' );
-            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' ); 
+            // css specific style sheets
+            wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __DIR__ ) . '/js/l_i_script.js');
@@ -15,9 +19,9 @@ function load_tool($tool) {
             include_once plugin_dir_path( __DIR__ ) . 'includes/lames_idiophones.html';
             break;
         case "flexion_3_points":
-            // css styles
-            // wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' );
-            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' ); 
+            // css specific style sheets
+            wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
@@ -25,9 +29,9 @@ function load_tool($tool) {
             include_once plugin_dir_path( __DIR__ ) . 'includes/flexion_3_points.html';
             break;
         case "flexion_4_points":
-            // css styles
-            // wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' );
-            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' ); 
+            // css specific style sheets
+            wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/js/f_4_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __DIR__ ) . '/js/f_4_script.js');
@@ -35,9 +39,9 @@ function load_tool($tool) {
             include_once plugin_dir_path( __DIR__ ) . 'includes/flexion_4_points.html';
             break;
         case "poutres" :
-            // css styles
-            // wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' );
-            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' ); 
+            // css specific style sheets
+            wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
@@ -45,9 +49,9 @@ function load_tool($tool) {
             include_once plugin_dir_path( __DIR__ ) . 'includes/poutres.html';
             break;
         case "plaques_woodhouse" :
-            // css styles
-            // wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' );
-            // wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' ); 
+            // css specific style sheets
+            wp_register_style('olt-style', plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' );
+            wp_enqueue_style( 'olt-style',  plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' ); 
             // js scripts
             wp_register_script('olt-script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
             wp_enqueue_script( 'olt-script',  plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
