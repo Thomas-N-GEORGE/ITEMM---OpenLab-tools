@@ -93,7 +93,7 @@ $j(document).ready(function () {
       }
     });
   }
-  // We call it a first time
+  // We call it a first time, fetches default values
   retrieveData();
 
   function displayOutput(data) {
@@ -113,7 +113,7 @@ $j(document).ready(function () {
   //************************
   //***** Calculations *****
   //************************
-  // ( !!! RESPECT ORDER OF CALCULATION FUNCTION CALLING !!!...)
+  // ( !!! RESPECT CALCULATION FUNCTION ORDER CALLING !!!...)
 
   function calcVol() {
     data.vol = data.ltot * data.base * data.haut;
