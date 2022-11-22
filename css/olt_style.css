@@ -1,4 +1,7 @@
-/* COLORS FOR TOOL STYLE */
+/**
+ COLORS FOR TOOL STYLE
+ You can define here the colors for the chart rows 
+**/
 :root {
     --chart-input-backgroud-color: blanchedalmond;;
     --chart-result-backgroud-color:  lightgreen;
@@ -31,15 +34,15 @@
   text-align: end;
 }
 
-.olt-input {
+.olt-input-row {
   background-color: var(--chart-input-backgroud-color);
 }
 
-.olt-result {
+.olt-result-row {
   background-color: var(--chart-result-backgroud-color);
 }
 
-.olt-info {
+.olt-info-row {
   background-color: var(chart-info-backgroud-color);
 }
 
