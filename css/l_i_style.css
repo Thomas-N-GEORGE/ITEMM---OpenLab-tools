@@ -1,46 +1,4 @@
-/* COLORS FOR TOOL STYLE */
-:root {
-    --chart-input-backgroud-color: blanchedalmond;;
-    --chart-result-backgroud-color:  lightgreen;
-    --chart-info-backgroud-color: lightgrey;
-  }
+/*
+This is the specific style sheet for the lames_idiophones
+*/
 
-.olt-title {
-  color: red;
-}
-
-.olt-container {
-  margin: auto;
-  padding: 0;
-  box-sizing: border-box; /* forces the div to keep their size if padding applied */
-  text-decoration: none;
-  font-size: 62.5%; /* 1rem = 10px, pratique pour le calcul */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  width: 100%;
-}
-
-.olt-value {
-  text-align: end;
-}
-
-.olt-input {
-  background-color: var(--chart-input-backgroud-color);
-}
-
-.olt-result {
-  background-color: var(--chart-result-backgroud-color);
-}
-
-.olt-info {
-  background-color: var(chart-info-backgroud-color);
-}
-
-.olt-btn-submit {
-  background-color: var(--chart-result-backgroud-color);
-  border: none;
-  box-shadow: none;
-}

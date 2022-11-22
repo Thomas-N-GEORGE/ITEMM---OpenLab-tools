@@ -3,19 +3,16 @@
  You can define here the colors for the chart rows 
 **/
 :root {
-    --chart-input-backgroud-color: blanchedalmond;;
-    --chart-result-backgroud-color:  lightgreen;
-    --chart-info-backgroud-color: lightgrey;
-  }
-
-.olt-title {
-  color: red;
+  --chart-input-backgroud-color: blanchedalmond;
+  --chart-result-backgroud-color: lightgreen;
+  --chart-info-backgroud-color: lightgrey;
 }
 
+/* PLUGIN MAIN CONTAINER */
 .olt-container {
   margin: auto;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   text-decoration: none;
   /* font-size: 62.5%;  */
 
@@ -26,8 +23,19 @@
   width: 100%;
 }
 
+.olt-title {
+  color: red;
+}
+
+/* PDF ILLUSTRATION */
+.olt-pdf-iframe {
+  height: 30vh;
+  margin: 5rem 0;
+}
+
+/* CHARTS */
 .olt-table {
-  padding: 5rem 0;
+  margin: 1rem 0 3rem 0;
 }
 
 .olt-value {
@@ -46,6 +54,7 @@
   background-color: var(chart-info-backgroud-color);
 }
 
+/* SUBMIT BUTTON "CALCULER" */
 .olt-btn-submit {
   background-color: var(--chart-result-backgroud-color);
   border: none;
