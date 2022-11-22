@@ -203,12 +203,12 @@ $j(document).ready(function () {
     }
 
     function calcFtpers() {
-        //O3 =SQRT(((G35*1000000000/3)*D11*D11)/(0,4053*D14*D9*D9*D10*D10))
+        // O3 =SQRT(((G35*1000000000/3)*D11*D11)/(0,31*D14*D9*D9*D10*D10))
         data.ftpers = Math.sqrt(
             (
                 (data.g12pers * 1000000000 / 3) * data.epai * data.epai
             ) / (
-                0.4053 * data.mvol * data.long * data.long * data.larg * data.larg
+                0.31 * data.mvol * data.long * data.long * data.larg * data.larg
             )
         );
     }

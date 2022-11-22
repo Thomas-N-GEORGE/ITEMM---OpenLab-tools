@@ -1,4 +1,7 @@
-/* COLORS FOR TOOL STYLE */
+/**
+ COLORS FOR TOOL STYLE
+ You can define here the colors for the chart rows 
+**/
 :root {
     --chart-input-backgroud-color: blanchedalmond;;
     --chart-result-backgroud-color:  lightgreen;
@@ -12,9 +15,9 @@
 .olt-container {
   margin: auto;
   padding: 0;
-  box-sizing: border-box; /* forces the div to keep their size if padding applied */
+  box-sizing: border-box; 
   text-decoration: none;
-  font-size: 62.5%; /* 1rem = 10px, pratique pour le calcul */
+  /* font-size: 62.5%;  */
 
   display: flex;
   flex-direction: column;
@@ -23,19 +26,23 @@
   width: 100%;
 }
 
+.olt-table {
+  padding: 5rem 0;
+}
+
 .olt-value {
   text-align: end;
 }
 
-.olt-input {
+.olt-input-row {
   background-color: var(--chart-input-backgroud-color);
 }
 
-.olt-result {
+.olt-result-row {
   background-color: var(--chart-result-backgroud-color);
 }
 
-.olt-info {
+.olt-info-row {
   background-color: var(chart-info-backgroud-color);
 }
 
