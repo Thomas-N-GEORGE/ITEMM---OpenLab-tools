@@ -55,8 +55,10 @@ var $j = jQuery.noConflict();
 
 // don't do anything until page is loaded : 
 $j(document).ready(function () {
-    // ===== DOM Elements =====
-    // our DOM elements as jquery objects :
+    //************************
+  //***** DOM Elements *****
+  //************************
+  // ALL our DOM elements containing numerical fields as an object of jquery objects :
     const domElements = {};
 
     // we populate it
@@ -64,12 +66,43 @@ $j(document).ready(function () {
         domElements[field] = $j("#olt-" + field);
     });
 
+  // Checking numerical inputs
+    // our numerical input fields
+  var inputFields = [];
+  $j(".olt-input").each(function () {
+    inputFields.push($j(this).attr("id"));
+  });
+  console.log("inputFields", inputFields);
 
-    // our data values for calculation
+  // <p> warning for bad input
+  let badInputWarning = `
+    <p class="olt-bad-input-warning">please check your input value</p>
+  `;
+
+  // display a warning (as a DOM element <p>)
+  function displayBadInputWarning(field) {
+    domElements[field].parent().append(badInputWarning);
+  }
+
+  // remove any bad input warning
+  function removeBadInputWarnings() {
+    $j(".olt-bad-input-warning").each(function () {
+      $j(this).remove();
+      // console.log($j(this));
+    });
+  }
+
+  //*****************************
+  //***** Data input/output *****
+  //*****************************
+  // our data values object for calculation
     const data = {};
 
+  // we populate it
     function retrieveData() {
-        fields.forEach((field) => {
+    removeBadInputWarnings();
+    
+    fields.forEach((field) => {
             // check if there are any constants set above
             if (field in numConstants) {
                 // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
@@ -78,10 +111,13 @@ $j(document).ready(function () {
                 // data[field] = Number(domElements[field].val());
                 data[field] = (domElements[field].val()).replaceAll(",", ".");
                 data[field] = Number(data[field]);
+                if (inputFields.includes("olt-" + field) && isNaN(data[field])) {
+                    displayBadInputWarning(field);
+                  }
             }
         });
     }
-    // We call it a first time
+    // We call it a first time, fetches default values
     retrieveData();
 
     function displayOutput(data) {
@@ -242,7 +278,10 @@ $j(document).ready(function () {
     // console.log("it's working 3 !");
 
 
-    // Form submission
+    //**************************
+  //***** EVENT LISTENER *****
+  //**************************
+  // Form submission : Refreshing I/O data, doing calculations
     $j("form").submit((e) => {
         // prevent the refreshing of page
         e.preventDefault();

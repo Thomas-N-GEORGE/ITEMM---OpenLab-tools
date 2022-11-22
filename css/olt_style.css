@@ -1,15 +1,15 @@
 /* COMMON STYLE SHEET FOR ALL TOOLS*/
 
-/**
+/*
  You can define here the colors for the chart rows 
-**/
-:root {
+*/
+/* PLUGIN MAIN CONTAINER */
+.olt-container {
   --chart-input-backgroud-color: blanchedalmond;
   --chart-result-backgroud-color: lightgreen;
   --chart-info-backgroud-color: lightgrey;
 }
 
-/* PLUGIN MAIN CONTAINER */
 .olt-container {
   margin: auto;
   padding: 0;
@@ -24,6 +24,7 @@
   width: 100%;
 }
 
+/* TITLE */
 .olt-title {
   color: red;
 }
@@ -60,4 +61,9 @@
   background-color: var(--chart-result-backgroud-color);
   border: none;
   box-shadow: none;
+}
+
+
+.olt-bad-input-warning {
+  color: red;
 }
