@@ -6,6 +6,11 @@ function load_tool($tool) {
     // css common style sheet for all tools
     // wp_register_style('olt_common_style', plugin_dir_url( __DIR__ ) . '/css/olt_style.css');
     wp_enqueue_style( 'olt_common_style',  plugin_dir_url( __DIR__ ) . '/css/olt_style.css' ); 
+
+    // js common module script file
+    wp_register_script('olt_common_script', plugin_dir_url( __DIR__ ) . '/js/olt_class.js', array('jquery'),'1.0', true);
+    wp_enqueue_script( 'olt_common_script',  plugin_dir_url( __DIR__ ) . '/js/olt_class.js');
+
     
     switch ($tool) {
         case "lames_idiophones":
@@ -23,8 +28,14 @@ function load_tool($tool) {
             // wp_register_style('olt_f_3_p_style', plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' );
             wp_enqueue_style( 'olt_f_3_p_style',  plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' ); 
             // js scripts
-            wp_register_script('olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
-            wp_enqueue_script( 'olt_f_3_p_script',  plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
+            // wp_register_script('olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
+            // wp_enqueue_script( 'olt_f_3_p_script',  plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
+            
+            wp_register_script('olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
+
+            
+
             // html
             include_once plugin_dir_path( __DIR__ ) . 'includes/flexion_3_points.html';
             break;
