@@ -1,0 +1,42 @@
+<div class="olt-container">
+  <h1 class="olt-title">TEMPLATE TOOL</h1>
+
+  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
+  <iframe class="olt-pdf-iframe" src=""></iframe>
+
+  <h2>Enter tesseract edge dimension</h2>
+
+  <form id="olt-form1" action=""></form>
+  <div class="olt-table">
+    <table>
+      <tr class="olt-input-row">
+        <td>
+          <label for="olt-edge">edge length (m)</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            name="olt-edge"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-edge"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <td>4D volume (m4)</td>
+        <td class="olt-value olt-result" id="olt-volm4" value="1">1</td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <td>Volume (m3)</td>
+        <td class="olt-value" id="olt-volcm4" value="1">1</td>
+      </tr>
+    </table>
+  </div>
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    CALCULER
+  </button>
+</div>
