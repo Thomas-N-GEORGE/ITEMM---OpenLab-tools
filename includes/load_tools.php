@@ -63,8 +63,12 @@ function load_tool($tool) {
             // wp_register_style('olt_poutres_style', plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' );
             wp_enqueue_style( 'olt_poutres_style',  plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' ); 
             // js scripts
-            wp_register_script('olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
-            wp_enqueue_script( 'olt_poutres_script',  plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
+            // wp_register_script('olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
+            // wp_enqueue_script( 'olt_poutres_script',  plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
+
+            wp_register_script('olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
+
             // html                    
             include_once plugin_dir_path( __DIR__ ) . 'includes/poutres.html';
             break;

@@ -78,16 +78,18 @@ class olt {
   }
 
   // display output in page
-  displayOutput() {
+  displayOutput(exceptSpecificFields = []) {
     for (let field of this.fields) {
-      // Format numerical output as scientific if not easily readable :
-      if (
-        Math.abs(this.data[field]) >= 10000 ||
-        Math.abs(this.data[field]) <= 0.1
-      ) {
-        this.domElements[field].text(this.data[field].toExponential(3));
-      } else {
-        this.domElements[field].text(this.data[field].toFixed(3));
+      if (!exceptSpecificFields.includes(field)) {
+        // Format numerical output as scientific if not easily readable :
+        if (
+          Math.abs(this.data[field]) >= 10000 ||
+          Math.abs(this.data[field]) <= 0.1
+        ) {
+          this.domElements[field].text(this.data[field].toExponential(3));
+        } else {
+          this.domElements[field].text(this.data[field].toFixed(3));
+        }
       }
     }
   }
