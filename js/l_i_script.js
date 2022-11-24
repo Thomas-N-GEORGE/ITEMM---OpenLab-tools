@@ -1,207 +1,177 @@
 /**
- * This is the script file for the LAMES_IDIOPHONES tool 
- * 
+ * This is the script file for the LAMES_IDIOPHONES tool
+ *
  * Basically it binds entry input and result output in the HTML.
- * 
+ *
  * If some constants need to be reset, please do it here.
- * 
+ *
  */
-
 
 // ===== Numerical constants =====
 const numConstants = {
-    knl1: 4.73,
-    knl2: 4.73,
-    aire2: 0.00004,
-    mom2: 1.33E-11,
-    vito2: 130.0271552,
-}
+  knl1: 4.73,
+  knl2: 4.73,
+  //   aire2: 0.00004,
+  mom2: 1.33e-11,
+  vito2: 130.0271552,
+};
 
-// ===== Data fields in lames_idiophones tool ===== 
+// ===== Data fields in lames_idiophones tool =====
 const fields = [
-    "long1",
-    "knl1",
-    "base1",
-    "haut1",
-    "vol1",
-    "mvol1",
-    "aire1",
-    "mom1",
-    "mass1",
-    "myou1",
-    "freq1",
-    "vito1",
-    
-    "long2",
-    "knl2",
-    "base2",
-    "haut2",
-    "vol2",
-    "mvol2",
-    "aire2",
-    "mom2",
-    "mass2",
-    "myou2",
-    "freq2",
-    "vito2",
+  "long1",
+  "knl1",
+  "base1",
+  "haut1",
+  "vol1",
+  "mvol1",
+  "aire1",
+  "mom1",
+  "mass1",
+  "myou1",
+  "freq1",
+  "vito1",
+
+  "long2",
+  "knl2",
+  "base2",
+  "haut2",
+  "vol2",
+  "mvol2",
+  "aire2",
+  "mom2",
+  "mass2",
+  "myou2",
+  "freq2",
+  "vito2",
 ];
 
-// no conflict mode in jQuery
-var $j = jQuery.noConflict();
+// (no conflict mode in jQuery loaded in olt_functions.js)
 
-// don't do anything until page is loaded : 
+// don't do anything until page is loaded :
 $j(document).ready(function () {
-   //************************
-  //***** DOM Elements *****
   //************************
-  // ALL our DOM elements containing numerical fields as an object of jquery objects :
-    const domElements = {};
+  //***** Calculations *****
+  //************************
+  // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
 
-    // we populate it
-    fields.forEach((field) => {
-        domElements[field] = $j("#olt-" + field);
-    });
+  // chart 1
+  function calcVol1(data) {
+    data.vol1 = data.long1 * data.base1 * data.haut1;
+  }
 
-  // Checking numerical inputs
-  // our numerical input fields
-  var inputFields = [];
-  $j(".olt-input").each(function () {
-    inputFields.push($j(this).attr("id"));
+  function calcAire1(data) {
+    data.aire1 = data.base1 * data.haut1;
+  }
+
+  function calcMass1(data) {
+    data.mass1 = data.vol1 * data.mvol1;
+  }
+
+  function calcMom1(data) {
+    data.mom1 = (data.base1 * Math.pow(data.haut1, 3)) / 12;
+  }
+
+  function calcFreq1(data) {
+    // ((C3*C3)/(C2*C2*2*PI()))*SQRT((C11*C9)/(C8*C7))
+    data.freq1 =
+      ((data.knl1 * data.knl1) / (data.long1 * data.long1 * 2 * Math.PI)) *
+      Math.sqrt((data.myou1 * data.mom1) / (data.aire1 * data.mvol1));
+  }
+
+  function calcVito1(data) {
+    // (((C11/1000000000)/(C7*C5))^0,25)*SQRT(2*PI()*C12)
+    data.vito1 =
+      Math.pow(data.myou1 / 1000000000 / (data.haut1 * data.mvol1), 0.25) *
+      Math.sqrt(2 * Math.PI * data.freq1);
+  }
+
+  // Chart2
+  function calcVol2(data) {
+    data.vol2 = data.long2 * data.base2 * data.haut2;
+  }
+
+  function calcAire2(data) {
+    data.aire2 = data.base2 * data.haut2;
+  }
+
+  function calcVito2(data) {
+    //(((C24/1000000000)/(C20*C18))^0,25)*SQRT(2*PI()*C25)
+    data.vito2 =
+      Math.pow(data.myou2 / 1000000000 / (data.haut2 * data.mvol2), 0.25) *
+      Math.sqrt(2 * Math.PI * data.freq2);
+  }
+
+  function calcLong2(data) {
+    // SQRT((C16*C16)/(2*PI()*C25))*(((C24*C22)/(C21*C20))^0,25)
+    data.long2 =
+      Math.sqrt((data.knl2 * data.knl2) / (2 * Math.PI * data.freq2)) *
+      Math.pow((data.myou2 * data.mom2) / (data.aire2 * data.mvol2), 0.25);
+  }
+
+  function calcVol2(data) {
+    data.vol2 = data.long2 * data.base2 * data.haut2;
+  }
+
+  function calcMass2(data) {
+    data.mass2 = data.mvol2 * data.vol2;
+  }
+
+  function caclMom2(data) {
+    data.mom2 = (data.base2 * Math.pow(data.haut2, 3)) / 12;
+  }
+
+  // global
+  function calcChart(data) {
+    calcVol1(data);
+    calcAire1(data);
+    calcMass1(data);
+    calcMom1(data);
+    calcFreq1(data);
+    calcVito1(data);
+    calcVol2(data);
+    calcAire2(data);
+    calcVito2(data);
+    calcLong2(data);
+    calcVol2(data);
+    calcMass2(data);
+  }
+
+  //************************************
+  //***** starting point of script *****
+  //************************************
+
+  // script call debug check
+  console.log("it's working !");
+
+  // create a new olt object for our tool
+  const lamIdio = new olt(numConstants, fields);
+
+  // We fetche default values
+  lamIdio.retrieveData();
+
+  //****************************
+  //***** EVENT LISTENER *******
+  //***** tool interaction *****
+  //****************************
+
+  // Form submission in HTML :
+  // We refresh I/O data, do calculations
+  $j("form").submit((e) => {
+    // prevent the refreshing of page by browser
+    e.preventDefault();
+
+    // debug check
+    console.log("lamIdio.domElements : ", lamIdio.domElements);
+
+    // we retrieve user data input from page;
+    lamIdio.retrieveData();
+    // debug check
+    console.log("lamIdio.data", lamIdio.data);
+
+    // we do the calulations
+    calcChart(lamIdio.data);
+
+    // we display the output data
+    lamIdio.displayOutput();
   });
-  console.log("inputFields", inputFields);
-
-  // <p> warning for bad input
-  let badInputWarning = `
-    <p class="olt-bad-input-warning">please check your input value</p>
-  `;
-
-  // display a warning (as a DOM element <p>)
-  function displayBadInputWarning(field) {
-    domElements[field].parent().append(badInputWarning);
-  }
-
-  // remove any bad input warning
-  function removeBadInputWarnings() {
-    $j(".olt-bad-input-warning").each(function () {
-      $j(this).remove();
-      // console.log($j(this));
-    });
-  }
-
-  //*****************************
-  //***** Data input/output *****
-  //*****************************
-  // our data values object for calculation
-    const data = {};
-
-  // we populate it
-    function retrieveData() {
-    removeBadInputWarnings();
-    
-    fields.forEach((field) => {
-            if (field in numConstants) {
-                // console.log("found field ", field, " in numConstants, with value : ", numConstants[field]);
-                data[field] = numConstants[field];
-            } else {
-                // data[field] = Number(domElements[field].val());
-                data[field] = (domElements[field].val()).replaceAll(",", ".");
-                data[field] = Number(data[field]);
-                if (inputFields.includes("olt-" + field) && isNaN(data[field])) {
-                    displayBadInputWarning(field);
-                  }
-            }
-        });
-    }
-    // We call it a first time, fetches default values
-    retrieveData();
-
-    function displayOutput(data) {
-        for (let field of fields) {
-            // domElements[field].text(data[field]);
-            // Format numerical output : 
-            if (Math.abs(data[field]) >= 10000 || Math.abs(data[field]) <= 0.1) {
-                domElements[field].text(data[field].toExponential(3));
-            } else {
-                domElements[field].text(data[field].toFixed(3));
-            }
-            //console.log(domElements[field].val());
-        }
-    }
-
-    //************************
-    //***** Calculations *****
-    //************************
-    // ( !!! RESPECT ORDER OF CALCULATIONS !!!...)
-
-    // chart 1
-    function calcFreq1(long, knl, aire, mvol, mom, myou) {
-        // ((C3*C3)/(C2*C2*2*PI()))*SQRT((C11*C9)/(C8*C7))
-        return ((knl * knl) / (long * long * 2 * Math.PI)) * Math.sqrt((myou * mom) / (aire * mvol));
-    }
-
-    function calcVito1(haut, mvol, myou, freq) {
-        // (((C11/1000000000)/(C7*C5))^0,25)*SQRT(2*PI()*C12)
-        return Math.pow((myou / 1000000000) / (haut * mvol), 0.25) * Math.sqrt(2 * Math.PI * freq);
-    }
-
-    // global for chart1
-    function calcChart1() {
-        data.vol1 = data.long1 * data.base1 * data.haut1;
-        data.aire1 = data.base1 * data.haut1;
-        data.mass1 = data.vol1 * data.mvol1;
-        data.mom1 = data.base1 * Math.pow(data.haut1, 3) / 12;
-        data.freq1 = calcFreq1(data.long1, data.knl1, data.aire1, data.mvol1, data.mom1, data.myou1);
-        data.vito1 = calcVito1(data.haut1, data.mvol1, data.myou1, data.freq1);
-    }
-
-    // Chart2
-    function calcLong2(knl, freq, myou, mom, aire, mvol) {
-        // SQRT((C16*C16)/(2*PI()*C25))*(((C24*C22)/(C21*C20))^0,25)
-        return Math.sqrt((knl * knl) / (2 * Math.PI * freq)) * Math.pow((myou * mom) / (aire * mvol), 0.25);
-    }
-
-    function calcVol2(base, haut) {
-        return (calcLong2() * base * haut);
-    }
-
-    function calcMass2() {
-        return mvol2 * calcVol2();
-    }
-
-    function calcVito2() {
-        //(((C24/1000000000)/(C20*C18))^0,25)*SQRT(2*PI()*C25)
-    }
-
-    // global for chart2
-    function calcChart2() {
-        data.long2 = calcLong2(data.knl2, data.freq2, data.myou2, data.mom2, data.aire2, data.mvol2);
-        data.vol2 = data.long2 * data.base2 * data.haut2;
-        data.aire2 = data.base2 * data.haut2;
-        data.mass2 = data.vol2 * data.mvol2;
-        data.mom2 = data.base2 * Math.pow(data.haut2, 3) / 12;
-        data.vito2 = calcVito1(data.haut2, data.mvol2, data.myou2, data.freq2);
-    }
-
-
-    console.log("it's working !");
-    // console.log("it's working 2 !");
-    // console.log("it's working 3 !");
-
-    //**************************
-  //***** EVENT LISTENER *****
-  //**************************
-  // Form submission : Refreshing I/O data, doing calculations
-    $j("form").submit((e) => {
-        // prevent the refreshing of page
-        e.preventDefault();
-        // retrieve and check data 
-        console.log("domElements : ", domElements);
-        retrieveData();
-        console.log("data", data);
-        // calulate 
-        calcChart1();
-        calcChart2();
-        // display output
-        displayOutput(data);
-    });
 });
