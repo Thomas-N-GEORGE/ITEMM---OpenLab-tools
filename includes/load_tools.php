@@ -17,10 +17,8 @@ function load_tool($tool) {
             // css specific style sheets
             // wp_register_style('olt_l_i_style', plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' );
             wp_enqueue_style( 'olt_l_i_style',  plugin_dir_url( __DIR__ ) . '/css/l_i_style.css' ); 
-            // js scripts
-            // wp_register_script('olt_l_i_script', plugin_dir_url( __DIR__ ) . '/js/l_i_script.js', array('jquery'),'1.0', true);
-            // wp_enqueue_script( 'olt_l_i_script',  plugin_dir_url( __DIR__ ) . '/js/l_i_script.js');
 
+            // js scripts
             wp_register_script('olt_l_i_script', plugin_dir_url( __DIR__ ) . '/js/l_i_script.js', ['jquery','olt_common_script'],'1.0', true);
             wp_enqueue_script( 'olt_l_i_script', plugin_dir_url( __DIR__ ) . '/js/l_i_script.js');
 
@@ -32,10 +30,8 @@ function load_tool($tool) {
             // css specific style sheets
             // wp_register_style('olt_f_3_p_style', plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' );
             wp_enqueue_style( 'olt_f_3_p_style',  plugin_dir_url( __DIR__ ) . '/css/f_3_style.css' ); 
+
             // js scripts
-            // wp_register_script('olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', array('jquery'),'1.0', true);
-            // wp_enqueue_script( 'olt_f_3_p_script',  plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
-            
             wp_register_script('olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js', ['jquery','olt_common_script'],'1.0', true);
             wp_enqueue_script( 'olt_f_3_p_script', plugin_dir_url( __DIR__ ) . '/js/f_3_script.js');
 
@@ -47,10 +43,8 @@ function load_tool($tool) {
             // css specific style sheets
             // wp_register_style('olt_f_4_p_style', plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' );
             wp_enqueue_style( 'olt_f_4_p_style',  plugin_dir_url( __DIR__ ) . '/css/f_4_style.css' ); 
-            // js scripts
-            // wp_register_script('olt_f_4_p_script', plugin_dir_url( __DIR__ ) . '/js/f_4_script.js', array('jquery'),'1.0', true);
-            // wp_enqueue_script( 'olt_f_4_p_script',  plugin_dir_url( __DIR__ ) . '/js/f_4_script.js');
 
+            // js scripts
             wp_register_script('olt_f_4_p_script', plugin_dir_url( __DIR__ ) . '/js/f_4_script.js', ['jquery','olt_common_script'],'1.0', true);
             wp_enqueue_script( 'olt_f_4_p_script', plugin_dir_url( __DIR__ ) . '/js/f_4_script.js');
 
@@ -62,10 +56,8 @@ function load_tool($tool) {
             // css specific style sheets
             // wp_register_style('olt_poutres_style', plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' );
             wp_enqueue_style( 'olt_poutres_style',  plugin_dir_url( __DIR__ ) . '/css/poutres_style.css' ); 
-            // js scripts
-            // wp_register_script('olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', array('jquery'),'1.0', true);
-            // wp_enqueue_script( 'olt_poutres_script',  plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
 
+            // js scripts
             wp_register_script('olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js', ['jquery','olt_common_script'],'1.0', true);
             wp_enqueue_script( 'olt_poutres_script', plugin_dir_url( __DIR__ ) . '/js/poutres_script.js');
 
@@ -77,16 +69,54 @@ function load_tool($tool) {
             // css specific style sheets
             // wp_register_style('olt_p_w_style', plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' );
             wp_enqueue_style( 'olt_p_w_style',  plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' ); 
-            // js scripts
-            // wp_register_script('olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
-            // wp_enqueue_script( 'olt_p_w_script',  plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
 
+            // js scripts
             wp_register_script('olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', ['jquery','olt_common_script'],'1.0', true);
             wp_enqueue_script( 'olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
 
             // html                    
             include_once plugin_dir_path( __DIR__ ) . 'includes/plaques_woodhouse.html';
             break;
+
+        case "cordes" :
+            // css specific style sheets
+            // wp_register_style('olt_cordes_style', plugin_dir_url( __DIR__ ) . '/css/cordes_style.css' );
+            wp_enqueue_style( 'olt_cordes_style',  plugin_dir_url( __DIR__ ) . '/css/cordes_style.css' ); 
+
+            // js scripts
+            wp_register_script('olt_cordes_script', plugin_dir_url( __DIR__ ) . '/js/cordes_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_cordes_script', plugin_dir_url( __DIR__ ) . '/js/cordes_script.js');
+
+            // html                    
+            include_once plugin_dir_path( __DIR__ ) . 'includes/cordes.html';
+            break;
+
+        case "equiv" :
+            // css specific style sheets
+            // wp_register_style('olt_equiv_style', plugin_dir_url( __DIR__ ) . '/css/equiv_style.css' );
+            wp_enqueue_style( 'olt_equiv_style',  plugin_dir_url( __DIR__ ) . '/css/equiv_style.css' ); 
+
+            // js scripts
+            wp_register_script('olt_equiv_script', plugin_dir_url( __DIR__ ) . '/js/equiv_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_equiv_script', plugin_dir_url( __DIR__ ) . '/js/equiv_script.js');
+
+            // html                    
+            include_once plugin_dir_path( __DIR__ ) . 'includes/cordes.html';
+            break;
+
+        case "template" :
+            // css specific style sheets
+            // wp_register_style('olt_template_style', plugin_dir_url( __DIR__ ) . '/css/template_style.css' );
+            wp_enqueue_style( 'olt_template_style',  plugin_dir_url( __DIR__ ) . '/css/template_style.css' ); 
+
+            // js scripts
+            wp_register_script('olt_template_script', plugin_dir_url( __DIR__ ) . '/js/template_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_template_script', plugin_dir_url( __DIR__ ) . '/js/template_script.js');
+
+            // html                    
+            include_once plugin_dir_path( __DIR__ ) . 'includes/template.html';
+            break;
+
 
         default:
             echo "
@@ -100,6 +130,9 @@ function load_tool($tool) {
                         \"flexion_4_points\"</br>
                         \"poutres\"</br>
                         \"plaques_woodhouse\"</br>
+                        \"cordes\"</br>
+                        \"equiv\"</br>
+                        \"template\"</br>
                     <p>
             ";
       }
