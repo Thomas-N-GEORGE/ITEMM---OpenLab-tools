@@ -74,8 +74,12 @@ function load_tool($tool) {
             // wp_register_style('olt_p_w_style', plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' );
             wp_enqueue_style( 'olt_p_w_style',  plugin_dir_url( __DIR__ ) . '/css/p_w_style.css' ); 
             // js scripts
-            wp_register_script('olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
-            wp_enqueue_script( 'olt_p_w_script',  plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
+            // wp_register_script('olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', array('jquery'),'1.0', true);
+            // wp_enqueue_script( 'olt_p_w_script',  plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
+
+            wp_register_script('olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_p_w_script', plugin_dir_url( __DIR__ ) . '/js/p_w_script.js');
+
             // html                    
             include_once plugin_dir_path( __DIR__ ) . 'includes/plaques_woodhouse.html';
             break;

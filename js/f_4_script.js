@@ -127,10 +127,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // create a new olt object for our tool
-  const f3points = new olt(numConstants, fields);
+  const f4points = new olt(numConstants, fields);
 
   // We fetche default values
-  f3points.retrieveData();
+  f4points.retrieveData();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -144,20 +144,20 @@ $j(document).ready(function () {
     e.preventDefault();
 
     // debug check
-    console.log("domElements : ", f3points.domElements);
+    console.log("domElements : ", f4points.domElements);
 
     // warning messages cleanup in page
-    f3points.removeBadInputWarnings();
+    f4points.removeBadInputWarnings();
 
     // we retrieve user data input from page;
-    f3points.retrieveData();
+    f4points.retrieveData();
     // debug check
-    console.log("f3points.data", f3points.data);
+    console.log("f3points.data", f4points.data);
 
     // we do the calulations
-    calcChart(f3points.data);
+    calcChart(f4points.data);
 
     // we display the output data
-    f3points.displayOutput();
+    f4points.displayOutput();
   });
 });

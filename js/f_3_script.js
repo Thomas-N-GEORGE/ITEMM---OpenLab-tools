@@ -86,7 +86,7 @@ $j(document).ready(function () {
   // create a new olt object for our tool
   const f3points = new olt(numConstants, fields);
 
-  // We fetche default values
+  // We fetch default values
   f3points.retrieveData();
 
 
@@ -102,7 +102,7 @@ $j(document).ready(function () {
     e.preventDefault();
 
     // debug check
-    console.log("domElements : ", f3points.domElements);
+    console.log("f3points.domElements : ", f3points.domElements);
 
     // warning messages cleanup in page
     f3points.removeBadInputWarnings();
