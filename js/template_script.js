@@ -1,10 +1,19 @@
 /**
- * This is the script file for the TEMPLATE tool
+ * This is the specific script file for the TEMPLATE tool
  *
- * Basically it binds entry input and result output in the HTML.
+ * Here we basically define constants and fiels according to HTML ids.
+ * (If ever some constants need to be reset, please do it here)
  *
- * If some constants need to be reset, please do it here.
- *
+ * All the calculation functions match the original Google sheet charts.
+ * A global calcChart() function calls them all IN THE RIGHT ORDER.
+ * 
+ * Under the calculation section, at the end of this script, we have our
+ * Event Listener  : 
+ * every time we validate the inputs in HTML : 
+ *    data is fetched, 
+ *    calculations are called,
+ *    updated data is displayed
+ *   
  */
 
 // ===== Numerical defined constants =====
@@ -26,12 +35,19 @@ $j(document).ready(function () {
   //************************
   // ( !!! RESPECT CALCULATION FUNCTION ORDER CALLING !!!...)
 
-  function calcVol(data) {
-    data.vol = data.ltot * data.base * data.haut;
+  function calcVolm4(data) {
+    data.volm4 = Math.pow(data.edge, 4);
+  }
+
+  function calcVolcm4(data) {
+    data.volcm4 = Math.pow(data.edge * 100, 4);
   }
 
   // global
-  function calcChart(data) {}
+  function calcChart(data) {
+    calcVolm4(data);
+    calcVolcm4(data);
+  }
 
   //************************************
   //***** starting point of script *****
@@ -58,7 +74,7 @@ $j(document).ready(function () {
     e.preventDefault();
 
     // debug check
-    console.log("f3points.domElements : ", template.domElements);
+    console.log("template.domElements : ", template.domElements);
 
     // warning messages cleanup in page
     template.removeBadInputWarnings();

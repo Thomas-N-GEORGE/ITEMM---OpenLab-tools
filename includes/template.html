@@ -1,10 +1,22 @@
 <div class="olt-container">
   <h1 class="olt-title">TEMPLATE TOOL</h1>
 
-  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
-  <iframe class="olt-pdf-iframe" src=""></iframe>
+  <!-- .png illustration uploaded by WP, witch gives us this path to file -->
+  <!-- <div class="olt-img-container">
+    <img
+    src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_tesseract.png"
+    alt="illustration tesseract"
+    class="olt-img"
+    />
+  </div> -->
 
-  <h2>Enter tesseract edge dimension</h2>
+  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
+  <iframe
+    class="olt-pdf-iframe"
+    src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_tesseract.pdf"
+  ></iframe>
+
+  <h2>Enter tesseract edge length</h2>
 
   <form id="olt-form1" action=""></form>
   <div class="olt-table">
@@ -31,12 +43,12 @@
       </tr>
 
       <tr class="olt-info-row">
-        <td>Volume (m3)</td>
+        <td>4D volume (cm4)</td>
         <td class="olt-value" id="olt-volcm4" value="1">1</td>
       </tr>
     </table>
   </div>
   <button type="submit" form="olt-form1" class="olt-btn-submit">
-    CALCULER
+    CALCULATION
   </button>
 </div>

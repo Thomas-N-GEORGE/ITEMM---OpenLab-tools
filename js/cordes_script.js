@@ -76,7 +76,7 @@ $j(document).ready(function () {
 
   function calcMquadcyl(data) {
     // D7 =(PI()*(2*D5)^4)/64
-    data.mquadcyl = (Math.PI * Math.pow(2 * data.ray, 0.25)) / 64;
+    data.mquadcyl = (Math.PI * Math.pow((2 * data.ray), 4)) / 64;
   }
 
   function calcMquadhex(data) {
@@ -86,7 +86,7 @@ $j(document).ready(function () {
 
   function calcRaidcyl(data) {
     //D9 = =3*D4*D7/(D3*D3*D3)
-    data.mquadcyl = (3 * data.rigi * data.mquadcyl) / Math.pow(data.long, 3);
+    data.raidcyl = (3 * data.rigi * data.mquadcyl) / Math.pow(data.long, 3);
   }
 
   function clacRaidhex(data) {
@@ -96,7 +96,7 @@ $j(document).ready(function () {
 
   function calcAirecyl(data) {
     //D12 =PI()*D5*D5
-    data.airecyl = Math.PI * data.ray;
+    data.airecyl = Math.PI * data.ray * data.ray;
   }
 
   function calcAirehex(data) {
@@ -104,12 +104,12 @@ $j(document).ready(function () {
     data.airehex = (1 / 2) * 6 * (data.apothex / Math.sqrt(3)) * data.apothex;
   }
 
-  function clacMlinacyl(data) {
+  function calcMlinacyl(data) {
     //D14 =D11*D12
     data.mlinacyl = data.mvol * data.airecyl;
   }
 
-  function clacMlinahex(data) {
+  function calcMlinahex(data) {
     //D15 =D11*D13
     data.mlinahex = data.mvol * data.airehex;
   }
@@ -146,12 +146,12 @@ $j(document).ready(function () {
 
   function calcDefcyl(data) {
     //D28 ==D26/D4
-    data.defcyl = data.data.contcyl / data.rigi;
+    data.defcyl = data.contcyl / data.rigi;
   }
 
   function calcDefhex(data) {
     //D29 ==D27/D4
-    data.defhex = data.data.conthex / data.rigi;
+    data.defhex = data.conthex / data.rigi;
   }
 
   function calcInharcyl(data) {
@@ -161,7 +161,7 @@ $j(document).ready(function () {
       (data.tenscyl * data.long * data.long);
   }
 
-  function calcInarhex(data) {
+  function calcInharhex(data) {
     //D31 = =(PI()*PI()*D4*D8)/(D25*D3*D3)
     data.inharhex =
       (Math.PI * Math.PI * data.rigi * data.mquadhex) /
@@ -216,7 +216,7 @@ $j(document).ready(function () {
   }
   function calcMod6cyl(data) {
     //C38 ==B38*$C$33*SQRT(1+$D$30*B38*B38)
-    data.mod6cyl = 3 * data.mod1cyl * Math.sqrt(1 + data.inharcyl * 6 * 6);
+    data.mod6cyl = 6 * data.mod1cyl * Math.sqrt(1 + data.inharcyl * 6 * 6);
   }
   function calcMod6hex(data) {
     //D38 ==B38*$D$33*SQRT(1+$D$31*B38*B38)
@@ -272,7 +272,50 @@ $j(document).ready(function () {
   }
 
   // global
-  function calcChart(data) {}
+  function calcChart(data) {
+    calcMquadcyl(data);
+    calcMquadhex(data);
+    calcRaidcyl(data);
+    clacRaidhex(data);
+    calcAirecyl(data);
+    calcAirehex(data);
+    calcMlinacyl(data);
+    calcMlinahex(data);
+    calcMlintotcyl(data);
+    calcMlintothex(data);
+    calcTenscyl(data);
+    calcTenshex(data);
+    calcContcyl(data);
+    calcConthex(data);
+    calcDefcyl(data);
+    calcDefhex(data);
+    calcInharcyl(data);
+    calcInharhex(data);
+    calcMod1cyl(data);
+    calcMod1hex(data);
+    calcMod2cyl(data);
+    calcMod2hex(data);
+    calcMod3cyl(data);
+    calcMod3hex(data);
+    calcMod4cyl(data);
+    calcMod4hex(data);
+    calcMod5cyl(data);
+    calcMod5hex(data);
+    calcMod6cyl(data);
+    calcMod6hex(data);
+    calcMod7cyl(data);
+    calcMod7hex(data);
+    calcMod8cyl(data);
+    calcMod8hex(data);
+    calcMod9cyl(data);
+    calcMod9hex(data);
+    calcMod10cyl(data);
+    calcMod10hex(data);
+    calcMod11cyl(data);
+    calcMod11hex(data);
+    calcMod12cyl(data);
+    calcMod12hex(data);
+  }
 
   //************************************
   //***** starting point of script *****
@@ -299,7 +342,7 @@ $j(document).ready(function () {
     e.preventDefault();
 
     // debug check
-    cordes.log("f3points.domElements : ", cordes.domElements);
+    console.log("cordes.domElements : ", cordes.domElements);
 
     // warning messages cleanup in page
     cordes.removeBadInputWarnings();
