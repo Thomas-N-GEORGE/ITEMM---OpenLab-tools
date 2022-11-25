@@ -65,7 +65,7 @@ $j(document).ready(function () {
 
   function calcDefzel(data) {
     data.defzel =
-      data.flel /
+      100 * data.flel /
       ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa) /
         (12 * data.haut));
   }
@@ -96,7 +96,7 @@ $j(document).ready(function () {
   function calcDefmax(data) {
     // =(C19)/((3*C12*C12-4*C14*C14)/(12*C8))
     data.defmax =
-      data.flmax /
+      100* data.flmax /
       ((3 * data.l2app * data.l2app - 4 * data.dappfa * data.dappfa) /
         (12 * data.haut));
   }
