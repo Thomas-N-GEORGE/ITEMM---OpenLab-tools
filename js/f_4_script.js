@@ -25,6 +25,7 @@ const fields = [
   "flmax",
   "dboi",
   "vol",
+  "volcm3",
   "momq",
   "czel",
   "defzel",
@@ -47,6 +48,10 @@ $j(document).ready(function () {
 
   function calcVol(data) {
     data.vol = data.ltot * data.base * data.haut;
+  }
+
+  function calcVolcm3(data) {
+    data.volcm3 = 1000000 * data.ltot * data.base * data.haut;
   }
 
   function calcDBois(data) {
@@ -108,6 +113,7 @@ $j(document).ready(function () {
   // global
   function calcChart(data) {
     calcVol(data);
+    calcVolcm3(data);
     calcDBois(data);
     calcMomq(data);
     calcCzel(data);

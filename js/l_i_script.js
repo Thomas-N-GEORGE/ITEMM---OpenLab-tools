@@ -23,6 +23,7 @@ const fields = [
   "base1",
   "haut1",
   "vol1",
+  "vol1cm3",
   "mvol1",
   "aire1",
   "mom1",
@@ -36,6 +37,7 @@ const fields = [
   "base2",
   "haut2",
   "vol2",
+  "vol2cm3",
   "mvol2",
   "aire2",
   "mom2",
@@ -57,6 +59,10 @@ $j(document).ready(function () {
   // chart 1
   function calcVol1(data) {
     data.vol1 = data.long1 * data.base1 * data.haut1;
+  }
+
+  function calcVol1cm3(data) {
+    data.vol1cm3 = 1000000 * data.long1 * data.base1 * data.haut1;
   }
 
   function calcAire1(data) {
@@ -90,6 +96,10 @@ $j(document).ready(function () {
     data.vol2 = data.long2 * data.base2 * data.haut2;
   }
 
+  function calcVol2cm3(data) {
+    data.vol2cm3 = 1000000 * data.long2 * data.base2 * data.haut2;
+  }
+
   function calcAire2(data) {
     data.aire2 = data.base2 * data.haut2;
   }
@@ -117,12 +127,14 @@ $j(document).ready(function () {
   }
 
   function caclMom2(data) {
-    data.mom2 = (data.base2 * Math.pow(data.haut2, 3)) / 12;
+  // MISSING FORMULA ?
+      data.mom2 = (data.base2 * Math.pow(data.haut2, 3)) / 12;
   }
 
   // global
   function calcChart(data) {
     calcVol1(data);
+    calcVol1cm3(data);
     calcAire1(data);
     calcMass1(data);
     calcMom1(data);
@@ -133,6 +145,7 @@ $j(document).ready(function () {
     calcVito2(data);
     calcLong2(data);
     calcVol2(data);
+    calcVol2cm3(data);
     calcMass2(data);
   }
 

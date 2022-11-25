@@ -21,6 +21,7 @@ const fields = [
     "larg",
     "epai",
     "vol",
+    "volcm3",
     "mass",
     "mvol",
     "nuxy",
@@ -62,6 +63,10 @@ $j(document).ready(function () {
 
     function calcVol(data) {
         data.vol = data.long * data.larg * data.epai;
+    }
+    
+    function calcVolcm3(data) {
+        data.volcm3 = 1000000 * data.long * data.larg * data.epai;
     }
 
     function calcMvol(data) {
@@ -169,6 +174,7 @@ $j(document).ready(function () {
     // global 
     function calcChart(data) {
         calcVol(data);
+        calcVolcm3(data);
         calcMvol(data);
         calcI1(data);
         calcKnldisplay(data);
