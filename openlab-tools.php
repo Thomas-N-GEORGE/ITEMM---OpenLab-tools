@@ -12,8 +12,10 @@ Author URI: https://www.itemm.fr
 require plugin_dir_path( __FILE__ ) . 'includes/load_tools.php';
 
 /**
- * The olt_app is loaded inside a div.
- * We can call it on a WP page adding the sortcode [openlab-tools tool="the_tool_you_want_to_display\"]
+ * The olt_app calls the function load_tool($tool) to load a specific tool in WP shortcode place.
+ * 
+ * I.E. we can call a tool on a WP page by adding the sortcode [openlab-tools tool="the_tool_you_want_to_display"]
+ * 
  * @return string|false
  */
         

@@ -1,5 +1,5 @@
 /**
- * This file contains the main class implementing common funtionalities called by each tool script,
+ * This file contains the main class implementing common funtionalities called by each specific tool script,
  * 
  * such as fetching, checking and displayind data in the tool page.
  * 

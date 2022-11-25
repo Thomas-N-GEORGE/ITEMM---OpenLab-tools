@@ -1,10 +1,19 @@
 /**
- * This is the script file for the EQUIVALENT MATIÈRE GÉOMÉTRIE tool
+ * This is the specific script file for the EQUIVALENTS tool
  *
- * Basically it binds entry input and result output in the HTML.
+ * Here we basically define constants and fiels according to HTML ids.
+ * (If ever some constants need to be reset, please do it here)
  *
- * If some constants need to be reset, please do it here.
- *
+ * All the calculation functions match the original Google sheet charts.
+ * A global calcChart() function calls them all IN THE RIGHT ORDER.
+ * 
+ * Under the calculation section, at the end of this script, we have our
+ * Event Listener  : 
+ * every time we validate the inputs in HTML : 
+ *    data is fetched, 
+ *    calculations are called,
+ *    updated data is displayed
+ *   
  */
 
 // ===== Numerical defined constants =====
