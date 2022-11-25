@@ -1,7 +1,10 @@
-//
-// This class contains common funtionalities called by each tool script,
-// such as fetching, checking and displayind data in the tool page
-//
+/**
+ * This file contains the main class implementing common funtionalities called by each tool script,
+ * 
+ * such as fetching, checking and displayind data in the tool page.
+ * 
+ */
+
 
 // no conflict mode in jQuery
 var $j = jQuery.noConflict();
@@ -20,14 +23,14 @@ class olt {
     this.getInputFields();
   }
 
-  // population of ALL DOM interaction elements
+  // retrieve ALL DOM interaction elements
   getDomElements() {
     this.fields.forEach((field) => {
       this.domElements[field] = $j("#olt-" + field);
     });
   }
 
-  // population of INPUT fields
+  // retrieve of INPUT fields
   getInputFields() {
     let inputs = [];
     $j(".olt-input").each(function () {
@@ -55,18 +58,21 @@ class olt {
     });
   }
 
-  //***** fetch user data input *****
+  /***** fetch user data input *****/
   retrieveData() {
+    // debug check
+    console.log("domElements", this.domElements);
+    
     this.fields.forEach((field) => {
-      // first, check if field is a defined constant
+      // first, check if field is a defined constant in the specific tool script
       if (field in this.numConstants) {
         this.data[field] = this.numConstants[field];
       } else {
         // otherwise "parse" user input so french comma is accepted as anglosaxon dot for decimal notation
         this.data[field] = this.domElements[field].val().replaceAll(",", ".");
-        // and fetch it
+        // and make it a Number
         this.data[field] = Number(this.data[field]);
-        // check it
+        // then we check it
         if (
           this.inputFields.includes("olt-" + field) &&
           isNaN(this.data[field])
@@ -77,7 +83,7 @@ class olt {
     });
   }
 
-  // display output in page
+  /***** display output in page *****/
   displayOutput(exceptSpecificFields = []) {
     for (let field of this.fields) {
       if (!exceptSpecificFields.includes(field)) {
