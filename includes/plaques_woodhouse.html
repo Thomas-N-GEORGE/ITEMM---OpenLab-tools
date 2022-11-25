@@ -1,0 +1,394 @@
+<div class="olt-container">
+  <!-- <div class="olt-wrapper"> -->
+  <h1 class="olt-title">PLAQUES WOODHOUSE 1987</h1>
+
+  <!-- .png illustration uploaded by WP, witch gives us this path to file -->
+  <!-- <div class="olt-img-container">
+    <img
+      src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_plaques.png"
+      alt="illustration plaques"
+      class="olt-img"
+    />
+  </div> -->
+
+  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
+  <iframe
+    class="olt-pdf-iframe"
+    src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_plaques.pdf"
+  ></iframe>
+
+  <form id="olt-form1" action=""></form>
+  <!-- Rigidités	Modules Spécifiques : -->
+  <div class="olt-table">
+    <table>
+      <tr>
+        <td></td>
+        <th>Rigidités</th>
+        <th>Modules Spécifiques :</th>
+      </tr>
+      <!-- D3 E3 E longueur (Gpa) :	166,957	248,94 -->
+      <tr>
+        <th>E longueur (Gpa) :</th>
+        <td class="olt-result-row" id="olt-elongr" value="1"></td>
+        <td class="olt-result-row" id="olt-elongm" value="1"></td>
+      </tr>
+      <!-- D4 E4 E largeur (Gpa) :	0,54	0,81 -->
+      <tr>
+        <th>E largeur (Gpa) :</th>
+        <td class="olt-result-row" id="olt-elargr" value="1"></td>
+        <td class="olt-result-row" id="olt-elargm" value="1"></td>
+      </tr>
+      <!-- D5 E5 G plan (Gpa) :	2,97	4,42 -->
+      <tr>
+        <th>G plan (Gpa) :</th>
+        <td class="olt-result-row" id="olt-gplanr" value="1"></td>
+        <td class="olt-result-row" id="olt-gplanm" value="1"></td>
+      </tr>
+      <!-- D6 Ratio anisotropie 	0,0980	 -->
+      <tr>
+        <th>Ratio anisotropie</th>
+        <td>
+          <div id="olt-rani" value="1"></div>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <h2>Vitesses calculées :</h2>
+  <div class="olt-table">
+    <table>
+      <!-- G9 C1 (m/s) 6754 -->
+      <tr>
+        <th>C1 (m/s)</th>
+        <td class="olt-result-row" id="olt-c1" value="1"></td>
+      </tr>
+      <!-- G10 C2 (m/s)	2114 -->
+      <tr>
+        <th>C2 (m/s)</th>
+        <td class="olt-result-row" id="olt-c2" value="1"></td>
+      </tr>
+      <!-- G11 Ondes flex 1 à résonance Hz R (m/s) 78 -->
+      <tr>
+        <th>Ondes flex 1 à résonance Hz R (m/s)</th>
+        <td class="olt-result-row" id="olt-of1" value="1"></td>
+      </tr>
+      <!-- G12 Ondes flex 2 à résonance hz (m/s) 82 -->
+      <tr>
+        <th>Ondes flex 2 à résonance hz (m/s)</th>
+        <td class="olt-result-row" id="olt-of2" value="1"></td>
+      </tr>
+      <!-- G13 Ondes cisaillement (m/s) 32,7 -->
+      <tr>
+        <th>Ondes cisaillement (m/s)</th>
+        <td class="olt-result-row" id="olt-ocis" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Renseigner les fréquences des modes :</h2>
+  <div class="olt-table">
+    <table>
+      <!-- Fréquences mesurées :	Fréquences inférées résineux	Fréquences inférées feuillus -->
+      <tr>
+        <td></td>
+        <th>Fréquences mesurées :</th>
+        <th>Fréquences inférées résineux</th>
+        <th>Fréquences inférées feuillus</th>
+        <th>Fréquences inférées personnalisé</th>
+      </tr>
+      <!--L3 M3 N3 O3  F torsion plan (Hz)	135	83,4	95,7 -->
+      <tr>
+        <th>
+          <label for="olt-ftplan">F torsion plan (Hz)</label>
+        </th>
+        <td class="olt-input-row">
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-ftplan"
+            class="olt-value olt-input"
+            id="olt-ftplan"
+            value="1"
+          />
+        </td>
+
+        <td id="olt-ftres" value="1"></td>
+        <td id="olt-ftfeuil" value="1"></td>
+        <td id="olt-ftpers" value="1"></td>
+      </tr>
+      <!--L4 M4 N4 O4  F flexion 1 (longueur (Hz)	290	107,5	80,6 -->
+      <tr>
+        <th>
+          <label for="olt-fflex1">F flexion 1 (longueur) (Hz)</label>
+        </th>
+        <td class="olt-input-row">
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-fflex1"
+            class="olt-value olt-input"
+            id="olt-fflex1"
+            value="1"
+          />
+        </td>
+        <td id="olt-fflexres1" value="1"></td>
+        <td id="olt-fflexfeuil1" value="1"></td>
+        <td id="olt-fflexpers1" value="1"></td>
+      </tr>
+      <!--L5 M5 N5 O5  F flexion 2 (largeur) (Hz)	178	359,0	332,6 -->
+      <tr>
+        <th>
+          <label for="olt-fflex2">F flexion 2 (largeur) (Hz)</label>
+        </th>
+        <td class="olt-input-row">
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-fflex2"
+            class="olt-value olt-input"
+            id="olt-fflex2"
+            value="1"
+          />
+        </td>
+        <td id="olt-fflexres2" value="1"></td>
+        <td id="olt-fflexfeuil2" value="1"></td>
+        <td id="olt-fflexpers2" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Renseigner les dimensions des plaques :</h2>
+  <div class="olt-table">
+    <table>
+      <!--D9 Longueur (m) :	0,4-->
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-long">Longueur (m) :</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-long"
+            class="olt-value olt-input"
+            id="olt-long"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <!--D10 Largeur (m) :	0,122-->
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-larg">Largeur (m) :</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-larg"
+            class="olt-value olt-input"
+            id="olt-larg"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <!-- D11 Epaisseur (m) :	0,00284 -->
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-epai">Epaisseur (m) :</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-epai"
+            class="olt-value olt-input"
+            id="olt-epai"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <!-- D12 Volume (m3	0,000139 -->
+      <tr class="olt-info-row">
+        <th>Volume (m3)</th>
+        <td id="olt-vol" value="1"></td>
+      </tr>
+      
+      <tr class="olt-info-row">
+        <th>Volume (cm3)</th>
+        <td id="olt-volcm3" value="1"></td>
+      </tr>
+
+      <!-- D13 Masse (kg)	0,09295 -->
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mass">Masse (kg)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-mass"
+            class="olt-value olt-input"
+            id="olt-mass"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <!-- D14 Masse vol. (kg/m3)	 -->
+      <tr class="olt-result-row">
+        <th>Masse vol. (kg/m3)</th>
+        <td id="olt-mvol" value="1"></td>
+      </tr>
+
+      <!-- D15 Nu12 :	0,3 -->
+      <tr class="olt-info-row">
+        <th>Nu12 :</th>
+        <td id="olt-nu12" value="1"></td>
+      </tr>
+
+      <!-- D16 Nu21 :	0,03 -->
+      <tr class="olt-info-row">
+        <th>Nu21 :</th>
+        <td id="olt-nu21" value="1"></td>
+      </tr>
+
+      <!-- D17 Rigidité Flexion 1	47,68 -->
+      <tr class="olt-info-row">
+        <th>Rigidité Flexion 1</th>
+        <td id="olt-rf1" value="1"></td>
+      </tr>
+
+      <!-- D18 Rigidité Flexion 2	4,67-->
+      <tr class="olt-info-row">
+        <th>Rigidité Flexion 2</th>
+        <td id="olt-rf2" value="1"></td>
+      </tr>
+
+      <!--D19 D1	1,92E+09 -->
+      <tr class="olt-info-row">
+        <th>D1</th>
+        <td id="olt-d1" value="1"></td>
+      </tr>
+
+      <!-- D20 D3	1,88E+08 -->
+      <tr class="olt-info-row">
+        <th>D3</th>
+        <td id="olt-d3" value="1"></td>
+      </tr>
+
+      <!-- D21 D4:	3,93E+08 -->
+      <tr class="olt-info-row">
+        <th>D4</th>
+        <td id="olt-d4" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="olt-table">
+    <table>
+      <!-- G3 Ratio rigidités 1/2 -->
+      <tr class="olt-info-row">
+        <th>Ratio rigidités 1/2</th>
+        <td id="olt-rrigi" value="1"></td>
+      </tr>
+      <!-- G5 Ratio géométrique 1/2 -->
+      <tr class="olt-info-row">
+        <th>Ratio géométrique 1/2</th>
+        <td id="olt-rgeo" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>Sources :</h3>
+  <p>
+    McIntyre, M. E., & Woodhouse, J. (1988). On measuring the elastic and
+    damping constants of orthotropic sheet materials. Acta Metallurgica, 36(6),
+    1397–1416.
+  </p>
+  <p>
+    Viala, R. (2018). Towards a model-based decision support tool for stringed
+    musical instrument making [Université Bourgogne Franche-comté].
+    http://www.theses.fr/2018UBFCD002
+  </p>
+  <p>
+    Guitard, D., & El Amri, F. (1987). Modèles prévisionnels de comportement
+    élastique tridimensionnel pour les bois feuillus et les bois résineux.
+    Annales Des Sciences Forestières, 44(3), 335–358.
+  </p>
+
+  <h2>Valeurs de référence</h2>
+  <div class="olt-table">
+    <table>
+      <!-- Densité	E1 (GPa)	E2 (GPa)	G12 (GPa) -->
+      <tr>
+        <td></td>
+        <th>Densité</th>
+        <th><label for="olt-e1pers">E1 (GPa)</label></th>
+        <th><label for="olt-e2pers">E2 (GPa)</label></th>
+        <th><label for="olt-g12pers">G12 (GPa)</label></th>
+      </tr>
+
+      <!--C33 D33 E33 G33 Résineux	0,671	22,93	2,214	1,13 -->
+      <tr class="olt-info-row">
+        <th>Résineux</th>
+        <td id="olt-dres" value="1"></td>
+        <td id="olt-e1res" value="1"></td>
+        <td id="olt-e2res" value="1"></td>
+        <td id="olt-g12res" value="1"></td>
+      </tr>
+
+      <!--C34 D34 E34 G34 Feuillus	0,671	12,90	1,90	1,49 -->
+      <tr class="olt-info-row">
+        <th>Feuillus</th>
+        <td id="olt-dfeuil" value="1"></td>
+        <td id="olt-e1feuil" value="1"></td>
+        <td id="olt-e2feuil" value="1"></td>
+        <td id="olt-g12feuil" value="1"></td>
+      </tr>
+
+      <!--C35 D35 E35 G35 Personnalisé	0,671	10	5	1 -->
+      <tr class="olt-input-row">
+        <th>Personnalisé</th>
+        <td id="olt-dpers" value="1"></td>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-e1pers"
+            class="olt-value olt-input"
+            id="olt-e1pers"
+            value="1"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-e2pers"
+            class="olt-value olt-input"
+            id="olt-e2pers"
+            value="1"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            form="olt-form1"
+            name="olt-g12pers"
+            class="olt-value olt-input"
+            id="olt-g12pers"
+            value="1"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    CALCULER
+  </button>
+</div>

@@ -1,0 +1,179 @@
+<div class="olt-container">
+  <h1 class="olt-title">FLEXION 3 POINTS</h1>
+
+  <h3>Formulaire de calcul pour la flexion 3 points</h3>
+  <h3>une poutre de section rectangulaire (ou carrée) entre deux points</h3>
+  <h3>Appliquer une masse et mesurer le déplacement</h3>
+  <h3>Poutre appuyée - appuyée</h3>
+
+  <!-- .png illustration uploaded by WP, witch gives us this path to file -->
+  <!-- <div class="olt-img-container">
+    <img
+      src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres_flex_3_points.png"
+      alt="illustration poutres flexion 3 points"
+      class="olt-img"
+    />
+  </div> -->
+
+  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
+  <iframe
+    class="olt-pdf-iframe"
+    src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres_flex_3_points.pdf"
+  ></iframe>
+
+  <h2>À remplir</h2>
+
+  <form id="olt-form1" action=""></form>
+  <div class="olt-table">
+    <table>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-base">Base de la poutre b (m)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-base"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-base"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-haut">Hauteur de la poutre h (m)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-haut"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-haut"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-l2app">Longueur entre les deux appuis (L)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-l2app"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-l2app"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-ltot">Longueur total poutre (m)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-ltot"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-ltot"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mcen">Masse ajoutée au centre (kg)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-mcen"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mcen"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-dep">Déplacement mesuré au centre (m)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-dep"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-dep"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mpou">Masse poutre (kg)</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-mpou"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mpou"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr class="olt-result-row">
+        <th>Densité bois</th>
+        <td class="olt-value olt-result" id="olt-dboi" value="1"></td>
+      </tr>
+
+      <tr>
+        <th colspan="2">
+          <h2>Pour info :</h2>
+        </th>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Volume (m3)</th>
+        <td class="olt-value" id="olt-vol" value="1"></td>
+      </tr>
+      
+      <tr class="olt-info-row">
+        <th>Volume (cm3)</th>
+        <td class="olt-value" id="olt-volcm3" value="1"></td>
+      </tr>
+      
+      <tr class="olt-info-row">
+        <th>Moment quadratique</th>
+        <td class="olt-value" id="olt-momq" value="1"></td>
+      </tr>
+      
+      <tr class="olt-info-row">
+        <th>Force appliquée</th>
+        <td class="olt-value" id="olt-fapp" value="1"></td>
+      </tr>
+      
+      <tr class="olt-result-row">
+        <th>Module de Young calculé (GPa) :</th>
+        <td class="olt-value olt-result" id="olt-myouc" value="1"></td>
+      </tr>
+      
+      <tr class="olt-result-row">
+        <th>Module spécifique</th>
+        <td class="olt-value olt-result" id="olt-mspec" value="1"></td>
+      </tr>
+    </table>
+  </div>
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    CALCULER
+  </button>
+</div>

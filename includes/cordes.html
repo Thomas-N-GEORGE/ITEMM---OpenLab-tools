@@ -1,0 +1,332 @@
+<div class="olt-container">
+  <h1 class="olt-title">CORDES</h1>
+
+  <h2>Calcul de la raideur de la corde</h2>
+
+  <form id="olt-form1" action=""></form>
+  <div class="olt-table">
+    <table>
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-long">L [m]</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-long"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-long"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-rigi">Rigidité E [Pa]</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-rigi"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-rigi"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-ray">Rayon R [m]</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-ray"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-ray"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-apothex">Apothème hexagonal [m]</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-apothex"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-apothex"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Moment quadratique cylindrique I [m4]</th>
+        <td class="olt-value" id="olt-mquadcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Moment quadratique hexagonal I [m4]</th>
+        <td class="olt-value" id="olt-mquadhex" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Raideur cylindrique K [N.m]</th>
+        <td class="olt-value" id="olt-raidcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Raideur hexagonale K [N.m]</th>
+        <td class="olt-value" id="olt-raidhex" value="1"></td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mvol">Masse volumique [kg/m3])</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-mvol"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mvol"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Aire corde cylindrique [m2]</th>
+        <td class="olt-value" id="olt-airecyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Aire corde hexagonale [m2]</th>
+        <td class="olt-value" id="olt-airehex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Masse linéique ame cylindrique [kg/m3]</th>
+        <td class="olt-value olt-result" id="olt-mlinacyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Masse linéique ame hexagonale [kg/m3]</th>
+        <td class="olt-value olt-result" id="olt-mlinahex" value="1"></td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mlinfcyl">Masse linéique filage cylindrique</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-mlinfcyl"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mlinfcyl"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-mlinfhex">Masse linéique filage hexagonal</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-mlinfhex"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-mlinfhex"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Masse linéique totale (cylindrique)</th>
+        <td class="olt-value olt-result" id="olt-mlintotcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Masse linéique totale (hexagonal)</th>
+        <td class="olt-value olt-result" id="olt-mlintothex" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Calcul fréquence inharmonicité</h2>
+  <div class="olt-table">
+    <table>
+      <tr>
+        <td rowspan="10"></td>
+        <th class="olt-input-row olt-input-cell">
+          <label for="olt-masscyl">Masse cylindrique [kg]</label>
+        </th>
+        <td class="olt-input-row olt-input-cell">
+          <input
+            type="text"
+            name="olt-masscyl"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-masscyl"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <th class="olt-input-row olt-input-cell">
+          <label for="olt-masshex">Masse hexagonal [kg]</label>
+        </th>
+        <td class="olt-input-row olt-input-cell">
+          <input
+            type="text"
+            name="olt-masshex"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-masshex"
+            value="1"
+          />
+        </td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Tension cylindrique [N]</th>
+        <td class="olt-value" id="olt-tenscyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Tension hexagonal [N]</th>
+        <td class="olt-value" id="olt-tenshex" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Contrainte cylindrique [Pa]</th>
+        <td class="olt-value" id="olt-contcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Contrainte hexagonale [Pa]</th>
+        <td class="olt-value" id="olt-conthex" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Déformation cylindrique</th>
+        <td class="olt-value" id="olt-defcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Déformation hexagonal</th>
+        <td class="olt-value" id="olt-defhex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Inharmonicité cylindrique B</th>
+        <td class="olt-value olt-result" id="olt-inharcyl" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>Inharmonicité hexagonal B</th>
+        <td class="olt-value olt-result" id="olt-inharhex" value="1"></td>
+      </tr>
+
+      <tr>
+        <th>N° mode</th>
+        <th>Fréq cylindrique [hz]</th>
+        <th>Fréq hexagonal [hz]</th>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>1</th>
+        <td class="olt-value olt-result" id="olt-mod1cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod1hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>2</th>
+        <td class="olt-value olt-result" id="olt-mod2cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod2hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>3</th>
+        <td class="olt-value olt-result" id="olt-mod3cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod3hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>4</th>
+        <td class="olt-value olt-result" id="olt-mod4cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod4hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>5</th>
+        <td class="olt-value olt-result" id="olt-mod5cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod5hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>6</th>
+        <td class="olt-value olt-result" id="olt-mod6cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod6hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>7</th>
+        <td class="olt-value olt-result" id="olt-mod7cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod7hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>8</th>
+        <td class="olt-value olt-result" id="olt-mod8cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod8hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>9</th>
+        <td class="olt-value olt-result" id="olt-mod9cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod9hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>10</th>
+        <td class="olt-value olt-result" id="olt-mod10cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod10hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>11</th>
+        <td class="olt-value olt-result" id="olt-mod11cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod11hex" value="1"></td>
+      </tr>
+
+      <tr class="olt-result-row">
+        <th>12</th>
+        <td class="olt-value olt-result" id="olt-mod12cyl" value="1"></td>
+        <td class="olt-value olt-result" id="olt-mod12hex" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    CALCULER
+  </button>
+</div>
