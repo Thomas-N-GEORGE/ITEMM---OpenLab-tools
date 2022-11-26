@@ -26,8 +26,6 @@ After that is done, use a shortcode in one of your WP pages as mentionned above.
 
 To get the images to display correctly, first you need to upload images in WP media. Then you can copy the link to these images found in your WP media library, and paste the link in the .html corresponding files. Paste inside the tag \<img src="wp_link_to_your_img.png"> or \<iframe src ="wp_link_to_your_img.pdf">  
 
-You're done.
-
 ***
 ***
 
