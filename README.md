@@ -2,9 +2,6 @@
 
 ## ITEMM - OpenLab tools for helping musical instrument makers
 
-***
-***
-
 We implement seven different tools which are basically charts doing some calculation after user input, and displaying results.
 There is an eighth "template" tool meant to be a model for any new tool you would like to create.
 
