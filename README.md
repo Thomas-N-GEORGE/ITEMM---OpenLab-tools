@@ -35,6 +35,6 @@ You're done.
 - The entry point is the file openlab-tools.php which calls the load_tool() function in file /includes/load_tool.php
 - load_tool() will take care of loading the proper files to get the tool displayed, styled with CSS, and scripted with Javascript ! If you want to add a new tool, check the "template" part in this function and adapt it to your new tool.
 - Javascript : we have a central olt_class.js script that is common to all tools, it contains the main functionnalities for interaction. And one other .js specific file per tool : here you can find the specific fields (corresponding to the /includes/.html tool file) for input/output and calculations.
-- Style : a main olt_style common to every tool, you can here change the style for all tools. And if you need some specific tweaking, please use the specific .css files. 
+- Style : a main olt_style.css is common to every tool, you can here change the style for all tools. And if you need some specific tweaking, please use the specific .css files. 
 
 
