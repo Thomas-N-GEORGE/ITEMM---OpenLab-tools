@@ -58,10 +58,18 @@ $j(document).ready(function () {
 
   // create a new olt object for our tool
   const template = new olt(numConstants, fields);
+  
+  // getting previous data input :
+  const userPreviousData = JSON.parse(localStorage.getItem("oltTemplateUserData"));
 
-  // We fetch default values
-  template.retrieveData();
-
+  // We load previous data if they exist or fetch default values
+  if (userPreviousData !== null) {
+    template.data = userPreviousData;
+    template.displayOutput();
+  } else {
+    template.retrieveData();
+  }
+  
   //****************************
   //***** EVENT LISTENER *******
   //***** tool interaction *****
@@ -86,6 +94,10 @@ $j(document).ready(function () {
 
     // we do the calulations
     calcChart(template.data);
+
+    // add to local storage
+    const userData = JSON.stringify(template.data);
+    localStorage.setItem("oltTemplateUserData", userData); 
 
     // we display the output data
     template.displayOutput();
