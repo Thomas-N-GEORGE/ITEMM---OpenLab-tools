@@ -1,10 +1,9 @@
 /**
  * This file contains the main class implementing common funtionalities called by each specific tool script,
- * 
+ *
  * such as fetching, checking and displayind data in the tool page.
- * 
+ *
  */
-
 
 // no conflict mode in jQuery
 var $j = jQuery.noConflict();
@@ -33,10 +32,17 @@ class olt {
   // retrieve of INPUT fields
   getInputFields() {
     let inputs = [];
+
+    // get every input field
+    // and populate our inputFields array
+    // with its id "parsed" to match our fields
     $j(".olt-input").each(function () {
-      inputs.push($j(this).attr("id"));
+      let field = $j(this).attr("id").split("-")[1];
+      inputs.push(field);
     });
+
     this.inputFields = inputs;
+
     // debug check
     console.log("inputFields", this.inputFields);
   }
@@ -62,7 +68,9 @@ class olt {
   retrieveData() {
     // debug check
     console.log("domElements", this.domElements);
-    
+
+    let userInputIsOK = true;
+
     this.fields.forEach((field) => {
       // first, check if field is a defined constant in the specific tool script
       if (field in this.numConstants) {
@@ -72,29 +80,43 @@ class olt {
         this.data[field] = this.domElements[field].val().replaceAll(",", ".");
         // and make it a Number
         this.data[field] = Number(this.data[field]);
-        // then we check it
-        if (
-          this.inputFields.includes("olt-" + field) &&
-          isNaN(this.data[field])
-        ) {
+        // then we check fi the inputs are valid
+        if (this.inputFields.includes(field) && isNaN(this.data[field])) {
           this.displayBadInputWarning(field);
+          userInputIsOK = false;
         }
       }
     });
+
+    // says if we have a NaN in input fields
+    return userInputIsOK;
   }
 
-  /***** display output in page *****/
+  /***** display fields in page *****/
   displayOutput(exceptSpecificFields = []) {
     for (let field of this.fields) {
+      // special fields are not displayed
       if (!exceptSpecificFields.includes(field)) {
-        // Format numerical output as scientific if not easily readable :
-        if (
-          Math.abs(this.data[field]) >= 10000 ||
-          Math.abs(this.data[field]) <= 0.1
-        ) {
-          this.domElements[field].text(this.data[field].toExponential(3));
+        // Leave user input such as for display
+        if (!this.inputFields.includes(field)) {
+          // Format numerical output calculated values only as scientific if not easily readable :
+          if (
+            Math.abs(this.data[field]) >= 10000 ||
+            Math.abs(this.data[field]) <= 0.1
+          ) {
+            // this.domElements[field].val(this.data[field].toExponential(3));
+            // this.domElements[field].text(this.data[field].toExponential(3));
+            this.domElements[field].html(this.data[field].toExponential(3));
+          } else {
+            // this.domElements[field].val(this.data[field].toFixed(3));
+            // this.domElements[field].text(this.data[field].toFixed(3));
+            this.domElements[field].html(this.data[field].toFixed(3));
+          }
         } else {
-          this.domElements[field].text(this.data[field].toFixed(3));
+          // display user input such as
+          console.log(this.domElements[field].val());
+          this.domElements[field].val(this.data[field]);
+          // this.domElements[field].html(this.data[field]);
         }
       }
     }

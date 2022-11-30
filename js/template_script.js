@@ -61,14 +61,19 @@ $j(document).ready(function () {
   
   // getting previous data input :
   const userPreviousData = JSON.parse(localStorage.getItem("oltTemplateUserData"));
-
-  // We load previous data if they exist or fetch default values
+  
+  // We load previous data if they exist 
   if (userPreviousData !== null) {
     template.data = userPreviousData;
+    
+    // calcChart(template.data);
     template.displayOutput();
   } else {
+    // or fetch default values
     template.retrieveData();
   }
+
+  let badUserInputCount = 0;
   
   //****************************
   //***** EVENT LISTENER *******
@@ -87,19 +92,29 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     template.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    template.retrieveData();
-    // debug check
-    console.log("template.data", template.data);
+    // we retrieve user data input from page while checking it is correct;
+    if (template.retrieveData()) {
+      badUserInputCount = 0;
 
-    // we do the calulations
-    calcChart(template.data);
-
-    // add to local storage
-    const userData = JSON.stringify(template.data);
-    localStorage.setItem("oltTemplateUserData", userData); 
-
-    // we display the output data
-    template.displayOutput();
+      // debug check
+      console.log("template.data", template.data);
+      
+      // we do the calulations
+      calcChart(template.data);
+      
+      // add to local storage
+      const userData = JSON.stringify(template.data);
+      localStorage.setItem("oltTemplateUserData", userData); 
+      
+      // we display the output data
+      template.displayOutput();
+    } else {
+      badUserInputCount += 1;
+      // if user insists with bad input, alert him !
+      if (badUserInputCount > 2){
+        alert("please check your input values");
+        badUserInputCount = 0;
+      }
+    }
   });
 });
