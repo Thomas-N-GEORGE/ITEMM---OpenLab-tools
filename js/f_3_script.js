@@ -6,14 +6,15 @@
  *
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
- * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ *
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
 
 // ===== Numerical defined constants =====
@@ -41,7 +42,6 @@ const fields = [
 
 // don't do anything until page is loaded :
 $j(document).ready(function () {
-
   //************************
   //***** Calculations *****
   //************************
@@ -50,7 +50,7 @@ $j(document).ready(function () {
   function calcVol(data) {
     data.vol = data.ltot * data.base * data.haut;
   }
-  
+
   function calcVolcm3(data) {
     data.volcm3 = 1000000 * data.ltot * data.base * data.haut;
   }
@@ -90,27 +90,31 @@ $j(document).ready(function () {
     calcMspec(data);
   }
 
-
   //************************************
   //***** starting point of script *****
   //************************************
-  
+
   // script call debug check
   console.log("it's working !");
 
-  // create a new olt object for our tool
+  // we create a new olt object for our tool
   const f3points = new olt(numConstants, fields);
 
   // We fetch default values
-  f3points.retrieveData();
+  // f3points.retrieveData();
 
+  // we define our local storage key
+  const userStorage = "oltf3PUserData";
+
+  // and we load our page
+  f3points.loadPage(userStorage);
 
   //****************************
   //***** EVENT LISTENER *******
   //***** tool interaction *****
   //****************************
-  
-  // Form submission in HTML : 
+
+  // Form submission in HTML :
   // We refresh I/O data, do calculations
   $j("form").submit((e) => {
     // prevent the refreshing of page by browser
@@ -122,15 +126,21 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     f3points.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    f3points.retrieveData();
-    // debug check
-    console.log("f3points.data", f3points.data);
+    // we retrieve user data input from page while checking it is correct;
+    if (f3points.retrieveData()) {
+      // f3points.retrieveData();
+      // debug check
+      console.log("f3points.data", f3points.data);
 
-    // we do the calulations
-    calcChart(f3points.data);
+      // we do the calulations
+      calcChart(f3points.data);
 
-    // we display the output data
-    f3points.displayOutput();
+      // add to local storage
+      const userData = JSON.stringify(f3points.data);
+      localStorage.setItem(userStorage, userData);
+
+      // we display the output data
+      f3points.displayOutput();
+    }
   });
 });
