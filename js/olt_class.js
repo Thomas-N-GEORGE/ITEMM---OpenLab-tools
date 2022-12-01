@@ -14,6 +14,7 @@ class olt {
   domElements = {};
   inputFields = [];
   data = {};
+  badUserInputCount = 0;
 
   constructor(numConstants, fields) {
     this.numConstants = numConstants;
@@ -22,6 +23,7 @@ class olt {
     this.getInputFields();
   }
 
+  //--------------- page elements -------------------------
   // retrieve ALL DOM interaction elements
   getDomElements() {
     this.fields.forEach((field) => {
@@ -47,12 +49,13 @@ class olt {
     console.log("inputFields", this.inputFields);
   }
 
+  //------------- warnings for bad input ------------------
   // display a warning (as a DOM element <p>)
   displayBadInputWarning(field) {
     // <p> warning for bad input
     const badInputWarning = `
-      <p class="olt-bad-input-warning">please check your input value</p>
-      `;
+    <p class="olt-bad-input-warning">please check your input value</p>
+    `;
     this.domElements[field].parent().append(badInputWarning);
   }
 
@@ -64,7 +67,16 @@ class olt {
     });
   }
 
-  /***** fetch user data input *****/
+  // display an alert if user insists with bad input
+  mightDisplayBadInputAlert() {
+    this.badUserInputCount += 1;
+    if (this.badUserInputCount > 2) {
+      alert("please check your input values");
+      this.badUserInputCount = 0;
+    }
+  }
+
+  //----------- fetch user data input ---------------------
   retrieveData() {
     // debug check
     console.log("domElements", this.domElements);
@@ -80,7 +92,7 @@ class olt {
         this.data[field] = this.domElements[field].val().replaceAll(",", ".");
         // and make it a Number
         this.data[field] = Number(this.data[field]);
-        // then we check fi the inputs are valid
+        // then we check if the inputs are valid
         if (this.inputFields.includes(field) && isNaN(this.data[field])) {
           this.displayBadInputWarning(field);
           userInputIsOK = false;
@@ -88,37 +100,61 @@ class olt {
       }
     });
 
+    // how many bad inputs in a row ?
+    if (!userInputIsOK) {
+      this.mightDisplayBadInputAlert();
+    }
+
     // says if we have a NaN in input fields
     return userInputIsOK;
   }
 
-  /***** display fields in page *****/
+  //------------ display fields in page -------------------
   displayOutput(exceptSpecificFields = []) {
     for (let field of this.fields) {
       // special fields are not displayed
       if (!exceptSpecificFields.includes(field)) {
         // Leave user input such as for display
         if (!this.inputFields.includes(field)) {
-          // Format numerical output calculated values only as scientific if not easily readable :
+          // If numerical output not easily readable,
+          // format it as scientific notation
           if (
             Math.abs(this.data[field]) >= 10000 ||
             Math.abs(this.data[field]) <= 0.1
           ) {
-            // this.domElements[field].val(this.data[field].toExponential(3));
-            // this.domElements[field].text(this.data[field].toExponential(3));
             this.domElements[field].html(this.data[field].toExponential(3));
           } else {
-            // this.domElements[field].val(this.data[field].toFixed(3));
-            // this.domElements[field].text(this.data[field].toFixed(3));
+            // otherwise we format it with 3 decimal digits
             this.domElements[field].html(this.data[field].toFixed(3));
           }
         } else {
-          // display user input such as
+          // debug check
           console.log(this.domElements[field].val());
+
+          // display user input such as, in input fields
           this.domElements[field].val(this.data[field]);
-          // this.domElements[field].html(this.data[field]);
         }
       }
+    }
+  }
+
+  //------------- loading of the page ---------------------
+  loadPage(userStorage) {
+    // looking for previous data input in local storage :
+    const userPreviousData = JSON.parse(
+      localStorage.getItem(userStorage)
+    );
+
+    // if previous data exists
+    if (userPreviousData !== null) {
+      // We load it
+      this.data = userPreviousData;
+
+      // and display it
+      this.displayOutput();
+    } else {
+      // otherwise we fetch default values
+      this.retrieveData();
     }
   }
 }

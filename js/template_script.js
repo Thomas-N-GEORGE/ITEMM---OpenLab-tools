@@ -6,25 +6,22 @@
  *
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
- * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ *
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
 
 // ===== Numerical defined constants =====
 const numConstants = {};
 
 // ===== Data fields in flexion_3_points tool =====
-const fields = [
-    "edge",
-    "volm4",
-    "volcm4"
-];
+const fields = ["edge", "volm4", "volcm4"];
 
 // (no conflict mode in jQuery loaded in olt_functions.js)
 
@@ -56,25 +53,15 @@ $j(document).ready(function () {
   // script call debug check
   console.log("it's working !");
 
-  // create a new olt object for our tool
+  // we create a new olt object for our tool
   const template = new olt(numConstants, fields);
-  
-  // getting previous data input :
-  const userPreviousData = JSON.parse(localStorage.getItem("oltTemplateUserData"));
-  
-  // We load previous data if they exist 
-  if (userPreviousData !== null) {
-    template.data = userPreviousData;
-    
-    // calcChart(template.data);
-    template.displayOutput();
-  } else {
-    // or fetch default values
-    template.retrieveData();
-  }
 
-  let badUserInputCount = 0;
-  
+  // we define our local storage key
+  const userStorage = "oltTemplateUserData";
+
+  // and we load our page
+  template.loadPage(userStorage);
+
   //****************************
   //***** EVENT LISTENER *******
   //***** tool interaction *****
@@ -94,27 +81,18 @@ $j(document).ready(function () {
 
     // we retrieve user data input from page while checking it is correct;
     if (template.retrieveData()) {
-      badUserInputCount = 0;
-
       // debug check
       console.log("template.data", template.data);
-      
+
       // we do the calulations
       calcChart(template.data);
-      
+
       // add to local storage
       const userData = JSON.stringify(template.data);
-      localStorage.setItem("oltTemplateUserData", userData); 
-      
+      localStorage.setItem(userStorage, userData);
+
       // we display the output data
       template.displayOutput();
-    } else {
-      badUserInputCount += 1;
-      // if user insists with bad input, alert him !
-      if (badUserInputCount > 2){
-        alert("please check your input values");
-        badUserInputCount = 0;
-      }
     }
   });
 });
