@@ -17,6 +17,9 @@
  *
  */
 
+// ===== We define our local storage key =====
+const userStorage = "oltTemplateUserData";
+
 // ===== Numerical defined constants =====
 const numConstants = {};
 
@@ -54,13 +57,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // we create a new olt object for our tool
-  const template = new olt(numConstants, fields);
-
-  // we define our local storage key
-  const userStorage = "oltTemplateUserData";
+  const template = new olt(numConstants, fields, userStorage);
 
   // and we load our page
-  template.loadPage(userStorage);
+  template.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -87,12 +87,8 @@ $j(document).ready(function () {
       // we do the calulations
       calcChart(template.data);
 
-      // add to local storage
-      const userData = JSON.stringify(template.data);
-      localStorage.setItem(userStorage, userData);
-
-      // we display the output data
-      template.displayOutput();
+      // we try to render our calculations on page
+      template.render();
     }
   });
 });

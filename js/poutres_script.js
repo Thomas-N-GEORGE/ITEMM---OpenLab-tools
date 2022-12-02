@@ -67,7 +67,6 @@ const fields = [
 
 // don't do anything until page is loaded :
 $j(document).ready(function () {
- 
   //************************
   //***** Calculations *****
   //************************
@@ -282,8 +281,6 @@ $j(document).ready(function () {
 
     // we retrieve user data input from page while checking if it is correct;
     if (poutres.retrieveData()) {
-      // poutres.retrieveData();
-
       // debug check
       console.log("poutres.data", poutres.data);
 
