@@ -17,6 +17,9 @@
  *
  */
 
+// ===== We define our local storage key =====
+const userStorage = "oltf3PUserData";
+
 // ===== Numerical defined constants =====
 const numConstants = {};
 
@@ -98,16 +101,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // we create a new olt object for our tool
-  const f3points = new olt(numConstants, fields);
-
-  // We fetch default values
-  // f3points.retrieveData();
-
-  // we define our local storage key
-  const userStorage = "oltf3PUserData";
+  const f3points = new olt(numConstants, fields, userStorage);
 
   // and we load our page
-  f3points.loadPage(userStorage);
+  f3points.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -128,19 +125,14 @@ $j(document).ready(function () {
 
     // we retrieve user data input from page while checking it is correct;
     if (f3points.retrieveData()) {
-      // f3points.retrieveData();
       // debug check
       console.log("f3points.data", f3points.data);
 
       // we do the calulations
       calcChart(f3points.data);
 
-      // add to local storage
-      const userData = JSON.stringify(f3points.data);
-      localStorage.setItem(userStorage, userData);
-
-      // we display the output data
-      f3points.displayOutput();
+      // we try to render our calculations on page
+      f3points.render();
     }
   });
 });
