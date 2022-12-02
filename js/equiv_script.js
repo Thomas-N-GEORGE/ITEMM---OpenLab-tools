@@ -7,14 +7,18 @@
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
  * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
+
+// ===== We define our local storage key =====
+const userStorage = "oltEquivUserData";
 
 // ===== Numerical defined constants =====
 const numConstants = {};
@@ -97,10 +101,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // create a new olt object for our tool
-  const equiv = new olt(numConstants, fields);
+  const equiv = new olt(numConstants, fields, userStorage);
 
-  // We fetch default values
-  equiv.retrieveData();
+  // and we load our page
+  equiv.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -119,15 +123,16 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     equiv.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    equiv.retrieveData();
-    // debug check
-    console.log("equiv.data", equiv.data);
+    // we retrieve user data input from page while checking if it is correct;
+    if (equiv.retrieveData()) {
+      // debug check
+      console.log("poutres.data", equiv.data);
 
-    // we do the calulations
-    calcChart(equiv.data);
+      // we do the calulations
+      calcChart(equiv.data);
 
-    // we display the output data
-    equiv.displayOutput();
+      // we try to render our calculations on page
+      equiv.render();
+    }
   });
 });

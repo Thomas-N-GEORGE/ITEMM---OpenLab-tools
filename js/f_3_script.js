@@ -18,7 +18,7 @@
  */
 
 // ===== We define our local storage key =====
-const userStorage = "oltf3PUserData";
+const userStorage = "oltF3PUserData";
 
 // ===== Numerical defined constants =====
 const numConstants = {};
