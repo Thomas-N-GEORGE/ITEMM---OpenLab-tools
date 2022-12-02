@@ -11,16 +11,20 @@ var $j = jQuery.noConflict();
 class olt {
   numConstants;
   fields;
+  userStorage;
   domElements = {};
   inputFields = [];
+  noDisplayFields;
   data = {};
   badUserInputCount = 0;
 
-  constructor(numConstants, fields) {
+  constructor(numConstants, fields, userStorage, noDisplayFields = []) {
     this.numConstants = numConstants;
     this.fields = fields;
+    this.userStorage = userStorage;
     this.getDomElements();
     this.getInputFields();
+    this.noDisplayFields = noDisplayFields;
   }
 
   //--------------- page elements -------------------------
@@ -88,7 +92,8 @@ class olt {
       if (field in this.numConstants) {
         this.data[field] = this.numConstants[field];
       } else {
-        // otherwise "parse" user input so french comma is accepted as anglosaxon dot for decimal notation
+        // otherwise "parse" user input so french comma is accepted
+        // as anglosaxon dot for decimal notation
         this.data[field] = this.domElements[field].val().replaceAll(",", ".");
         // and make it a Number
         this.data[field] = Number(this.data[field]);
@@ -109,11 +114,24 @@ class olt {
     return userInputIsOK;
   }
 
+  //------------ check for NaN in data -------------------
+  checkCalculatedData() {
+    let dataOK = true;
+    for (const property in this.data) {
+      // debug check
+      // console.log(`${property} : ${this.data[property]}`);
+      if (isNaN(this.data[property])) {
+        dataOK = false;
+      }
+    }
+    return dataOK;
+  }
+
   //------------ display fields in page -------------------
-  displayOutput(exceptSpecificFields = []) {
+  displayOutput() {
     for (let field of this.fields) {
       // special fields are not displayed
-      if (!exceptSpecificFields.includes(field)) {
+      if (!this.noDisplayFields.includes(field)) {
         // Leave user input such as for display
         if (!this.inputFields.includes(field)) {
           // If numerical output not easily readable,
@@ -129,7 +147,7 @@ class olt {
           }
         } else {
           // debug check
-          console.log(this.domElements[field].val());
+          // console.log(this.domElements[field].val());
 
           // display user input such as, in input fields
           this.domElements[field].val(this.data[field]);
@@ -139,11 +157,9 @@ class olt {
   }
 
   //------------- loading of the page ---------------------
-  loadPage(userStorage) {
+  loadPage() {
     // looking for previous data input in local storage :
-    const userPreviousData = JSON.parse(
-      localStorage.getItem(userStorage)
-    );
+    const userPreviousData = JSON.parse(localStorage.getItem(this.userStorage));
 
     // if previous data exists
     if (userPreviousData !== null) {
@@ -155,6 +171,25 @@ class olt {
     } else {
       // otherwise we fetch default values
       this.retrieveData();
+    }
+  }
+
+  //------------- rendering function -------------
+  render() {
+    // We check the calculated data to see if we can display it
+    // This avoids NaN display and NaN in local storage causing crashes
+
+    if (this.checkCalculatedData()) {
+      // add to local storage
+      const userData = JSON.stringify(this.data);
+      localStorage.setItem(this.userStorage, userData);
+
+      // we display the output data
+      this.displayOutput();
+    } else {
+      alert(
+        "Can't proceed through calculations, may be your input has unrealistic values ?"
+      );
     }
   }
 }
