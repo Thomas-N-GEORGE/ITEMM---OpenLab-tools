@@ -7,14 +7,18 @@
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
  * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
+
+// ===== We define our local storage key =====
+const userStorage = "oltF4PUserData";
 
 // ===== Numerical constants =====
 const numConstants = {};
@@ -142,10 +146,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // create a new olt object for our tool
-  const f4points = new olt(numConstants, fields);
+  const f4points = new olt(numConstants, fields, userStorage);
 
-  // We fetche default values
-  f4points.retrieveData();
+  // and we load our page
+  f4points.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -164,15 +168,16 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     f4points.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    f4points.retrieveData();
-    // debug check
-    console.log("f3points.data", f4points.data);
+    // we retrieve user data input from page while checking if it is correct;
+    if (f4points.retrieveData()) {
+      // debug check
+      console.log("poutres.data", f4points.data);
 
-    // we do the calulations
-    calcChart(f4points.data);
+      // we do the calulations
+      calcChart(f4points.data);
 
-    // we display the output data
-    f4points.displayOutput();
+      // we try to render our calculations on page
+      f4points.render();
+    }
   });
 });
