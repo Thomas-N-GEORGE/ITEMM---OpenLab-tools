@@ -120,7 +120,7 @@ class olt {
     for (const property in this.data) {
       // debug check
       // console.log(`${property} : ${this.data[property]}`);
-      if (isNaN(this.data[property])) {
+      if (!isFinite(this.data[property])) {
         dataOK = false;
       }
     }
