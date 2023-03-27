@@ -23,7 +23,7 @@ const userStorage = "oltTemplateUserData";
 // ===== Numerical defined constants =====
 const numConstants = {};
 
-// ===== Data fields in flexion_3_points tool =====
+// ===== Data fields in template tool =====
 const fields = ["edge", "volm4", "volcm4"];
 
 // (no conflict mode in jQuery loaded in olt_functions.js)

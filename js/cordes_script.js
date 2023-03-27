@@ -23,7 +23,7 @@ const userStorage = "oltCordesUserData";
 // ===== Numerical defined constants =====
 const numConstants = {};
 
-// ===== Data fields in flexion_3_points tool =====
+// ===== Data fields in cordes tool =====
 const fields = [
   "long",
   "rigi",

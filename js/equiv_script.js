@@ -23,7 +23,7 @@ const userStorage = "oltEquivUserData";
 // ===== Numerical defined constants =====
 const numConstants = {};
 
-// ===== Data fields in flexion_3_points tool =====
+// ===== Data fields in equiv tool =====
 const fields = [
     "long1",
     "long2",

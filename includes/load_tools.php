@@ -118,6 +118,19 @@ function load_tool($tool) {
             include_once plugin_dir_path( __DIR__ ) . 'includes/equiv.html';
             break;
 
+        case "quartiers" :
+            // css specific style sheet
+            wp_register_style('olt_quartiers_style', plugin_dir_url( __DIR__ ) . '/css/quartiers_style.css' );
+            wp_enqueue_style( 'olt_quartiers_style',  plugin_dir_url( __DIR__ ) . '/css/quartiers_style.css' ); 
+
+            // js specific script
+            wp_register_script('olt_quartiers_script', plugin_dir_url( __DIR__ ) . '/js/quartiers_script.js', ['jquery','olt_common_script'],'1.0', true);
+            wp_enqueue_script( 'olt_quartiers_script', plugin_dir_url( __DIR__ ) . '/js/quartiers_script.js');
+
+            // html                    
+            include_once plugin_dir_path( __DIR__ ) . 'includes/quartiers.html';
+            break;
+
         case "template" :
             // css specific style sheet
             wp_register_style('olt_template_style', plugin_dir_url( __DIR__ ) . '/css/template_style.css' );
@@ -146,6 +159,7 @@ function load_tool($tool) {
                         \"plaques_woodhouse\"</br>
                         \"cordes\"</br>
                         \"equivalence\"</br>
+                        \"quartiers\"</br>
                         \"template\"</br>
                     <p>
             ";
