@@ -6,25 +6,25 @@
  *
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
- * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ *
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
+
+// ===== We define our local storage key =====
+const userStorage = "oltTemplateUserData";
 
 // ===== Numerical defined constants =====
 const numConstants = {};
 
 // ===== Data fields in flexion_3_points tool =====
-const fields = [
-    "edge",
-    "volm4",
-    "volcm4"
-];
+const fields = ["edge", "volm4", "volcm4"];
 
 // (no conflict mode in jQuery loaded in olt_functions.js)
 
@@ -56,11 +56,11 @@ $j(document).ready(function () {
   // script call debug check
   console.log("it's working !");
 
-  // create a new olt object for our tool
-  const template = new olt(numConstants, fields);
+  // we create a new olt object for our tool
+  const template = new olt(numConstants, fields, userStorage);
 
-  // We fetch default values
-  template.retrieveData();
+  // and we load our page
+  template.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -79,15 +79,16 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     template.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    template.retrieveData();
-    // debug check
-    console.log("template.data", template.data);
+    // we retrieve user data input from page while checking it is correct;
+    if (template.retrieveData()) {
+      // debug check
+      console.log("template.data", template.data);
 
-    // we do the calulations
-    calcChart(template.data);
+      // we do the calulations
+      calcChart(template.data);
 
-    // we display the output data
-    template.displayOutput();
+      // we try to render our calculations on page
+      template.render();
+    }
   });
 });

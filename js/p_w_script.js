@@ -6,15 +6,19 @@
  *
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
- * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ *
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
+
+// ===== We define our local storage key =====
+const userStorage = "oltPWUserData";
 
 // ===== Numerical constants =====
 const numConstants = {
@@ -421,22 +425,22 @@ $j(document).ready(function () {
   //************************************
   //***** starting point of script *****
   //************************************
-  
+
   // script call debug check
   console.log("it's working !");
 
   // create a new olt object for our tool
-  const pw = new olt(numConstants, fields);
+  const pw = new olt(numConstants, fields, userStorage);
 
-  // We fetch default values
-  pw.retrieveData();
+  // and we load our page
+  pw.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
   //***** tool interaction *****
   //****************************
-  
-  // Form submission in HTML : 
+
+  // Form submission in HTML :
   // We refresh I/O data, do calculations
   $j("form").submit((e) => {
     // prevent the refreshing of page by browser
@@ -448,15 +452,16 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     pw.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    pw.retrieveData();
-    // debug check
-    console.log("pw.data", pw.data);
+    // we retrieve user data input from page while checking if it is correct;
+    if (pw.retrieveData()) {
+      // debug check
+      console.log("poutres.data", pw.data);
 
-    // we do the calulations
-    calcChart(pw.data);
+      // we do the calulations
+      calcChart(pw.data);
 
-    // we display the output data
-    pw.displayOutput();
+      // we try to render our calculations on page
+      pw.render();
+    }
   });
 });

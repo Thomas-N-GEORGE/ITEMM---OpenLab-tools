@@ -1,10 +1,9 @@
 /**
  * This file contains the main class implementing common funtionalities called by each specific tool script,
- * 
+ *
  * such as fetching, checking and displayind data in the tool page.
- * 
+ *
  */
-
 
 // no conflict mode in jQuery
 var $j = jQuery.noConflict();
@@ -12,17 +11,23 @@ var $j = jQuery.noConflict();
 class olt {
   numConstants;
   fields;
+  userStorage;
   domElements = {};
   inputFields = [];
+  noDisplayFields;
   data = {};
+  badUserInputCount = 0;
 
-  constructor(numConstants, fields) {
+  constructor(numConstants, fields, userStorage, noDisplayFields = []) {
     this.numConstants = numConstants;
     this.fields = fields;
+    this.userStorage = userStorage;
     this.getDomElements();
     this.getInputFields();
+    this.noDisplayFields = noDisplayFields;
   }
 
+  //--------------- page elements -------------------------
   // retrieve ALL DOM interaction elements
   getDomElements() {
     this.fields.forEach((field) => {
@@ -33,20 +38,28 @@ class olt {
   // retrieve of INPUT fields
   getInputFields() {
     let inputs = [];
+
+    // get every input field
+    // and populate our inputFields array
+    // with its id "parsed" to match our fields
     $j(".olt-input").each(function () {
-      inputs.push($j(this).attr("id"));
+      let field = $j(this).attr("id").split("-")[1];
+      inputs.push(field);
     });
+
     this.inputFields = inputs;
+
     // debug check
     console.log("inputFields", this.inputFields);
   }
 
+  //------------- warnings for bad input ------------------
   // display a warning (as a DOM element <p>)
   displayBadInputWarning(field) {
     // <p> warning for bad input
     const badInputWarning = `
-      <p class="olt-bad-input-warning">please check your input value</p>
-      `;
+    <p class="olt-bad-input-warning">please check your input value</p>
+    `;
     this.domElements[field].parent().append(badInputWarning);
   }
 
@@ -58,45 +71,125 @@ class olt {
     });
   }
 
-  /***** fetch user data input *****/
+  // display an alert if user insists with bad input
+  mightDisplayBadInputAlert() {
+    this.badUserInputCount += 1;
+    if (this.badUserInputCount > 2) {
+      alert("please check your input values");
+      this.badUserInputCount = 0;
+    }
+  }
+
+  //----------- fetch user data input ---------------------
   retrieveData() {
     // debug check
     console.log("domElements", this.domElements);
-    
+
+    let userInputIsOK = true;
+
     this.fields.forEach((field) => {
       // first, check if field is a defined constant in the specific tool script
       if (field in this.numConstants) {
         this.data[field] = this.numConstants[field];
       } else {
-        // otherwise "parse" user input so french comma is accepted as anglosaxon dot for decimal notation
+        // otherwise "parse" user input so french comma is accepted
+        // as anglosaxon dot for decimal notation
         this.data[field] = this.domElements[field].val().replaceAll(",", ".");
         // and make it a Number
         this.data[field] = Number(this.data[field]);
-        // then we check it
-        if (
-          this.inputFields.includes("olt-" + field) &&
-          isNaN(this.data[field])
-        ) {
+        // then we check if the inputs are valid
+        if (this.inputFields.includes(field) && isNaN(this.data[field])) {
           this.displayBadInputWarning(field);
+          userInputIsOK = false;
         }
       }
     });
+
+    // how many bad inputs in a row ?
+    if (!userInputIsOK) {
+      this.mightDisplayBadInputAlert();
+    }
+
+    // says if we have a NaN in input fields
+    return userInputIsOK;
   }
 
-  /***** display output in page *****/
-  displayOutput(exceptSpecificFields = []) {
+  //------------ check for NaN in data -------------------
+  checkCalculatedData() {
+    let dataOK = true;
+    for (const property in this.data) {
+      // debug check
+      // console.log(`${property} : ${this.data[property]}`);
+      if (!isFinite(this.data[property])) {
+        dataOK = false;
+      }
+    }
+    return dataOK;
+  }
+
+  //------------ display fields in page -------------------
+  displayOutput() {
     for (let field of this.fields) {
-      if (!exceptSpecificFields.includes(field)) {
-        // Format numerical output as scientific if not easily readable :
-        if (
-          Math.abs(this.data[field]) >= 10000 ||
-          Math.abs(this.data[field]) <= 0.1
-        ) {
-          this.domElements[field].text(this.data[field].toExponential(3));
+      // special fields are not displayed
+      if (!this.noDisplayFields.includes(field)) {
+        // Leave user input such as for display
+        if (!this.inputFields.includes(field)) {
+          // If numerical output not easily readable,
+          // format it as scientific notation
+          if (
+            Math.abs(this.data[field]) >= 10000 ||
+            Math.abs(this.data[field]) <= 0.1
+          ) {
+            this.domElements[field].html(this.data[field].toExponential(3));
+          } else {
+            // otherwise we format it with 3 decimal digits
+            this.domElements[field].html(this.data[field].toFixed(3));
+          }
         } else {
-          this.domElements[field].text(this.data[field].toFixed(3));
+          // debug check
+          // console.log(this.domElements[field].val());
+
+          // display user input such as, in input fields
+          this.domElements[field].val(this.data[field]);
         }
       }
+    }
+  }
+
+  //------------- loading of the page ---------------------
+  loadPage() {
+    // looking for previous data input in local storage :
+    const userPreviousData = JSON.parse(localStorage.getItem(this.userStorage));
+
+    // if previous data exists
+    if (userPreviousData !== null) {
+      // We load it
+      this.data = userPreviousData;
+
+      // and display it
+      this.displayOutput();
+    } else {
+      // otherwise we fetch default values
+      this.retrieveData();
+    }
+  }
+
+  //------------- rendering function -------------
+  render() {
+    // We check the calculated data to see if we can display it
+    // This avoids NaN display and NaN in local storage causing crashes
+
+    if (this.checkCalculatedData()) {
+      // add to local storage
+      const userData = JSON.stringify(this.data);
+      localStorage.setItem(this.userStorage, userData);
+
+      // we display the output data
+      this.displayOutput();
+    } else {
+      alert(
+        "Can't proceed through calculations, may be your input has unrealistic values ?"
+      );
     }
   }
 }

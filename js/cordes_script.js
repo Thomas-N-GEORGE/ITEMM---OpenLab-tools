@@ -7,14 +7,18 @@
  * All the calculation functions match the original Google sheet charts.
  * A global calcChart() function calls them all IN THE RIGHT ORDER.
  * 
- * Under the calculation section, at the end of this script, we have our
- * Event Listener  : 
- * every time we validate the inputs in HTML : 
- *    data is fetched, 
+ * After the calculation section, where the script starts,
+ * we initialize an olt object to be manipulated when loading the page
+ * and inside our Event Listener  :
+ * every time we validate the inputs in HTML :
+ *    data is fetched,
  *    calculations are called,
  *    updated data is displayed
- *   
+ *
  */
+
+// ===== We define our local storage key =====
+const userStorage = "oltCordesUserData";
 
 // ===== Numerical defined constants =====
 const numConstants = {};
@@ -334,10 +338,10 @@ $j(document).ready(function () {
   console.log("it's working !");
 
   // create a new olt object for our tool
-  const cordes = new olt(numConstants, fields);
+  const cordes = new olt(numConstants, fields, userStorage);
 
-  // We fetch default values
-  cordes.retrieveData();
+  // and we load our page
+  cordes.loadPage();
 
   //****************************
   //***** EVENT LISTENER *******
@@ -356,15 +360,16 @@ $j(document).ready(function () {
     // warning messages cleanup in page
     cordes.removeBadInputWarnings();
 
-    // we retrieve user data input from page;
-    cordes.retrieveData();
-    // debug check
-    console.log("cordes.data", cordes.data);
+    // we retrieve user data input from page while checking if it is correct;
+    if (cordes.retrieveData()) {
+      // debug check
+      console.log("poutres.data", cordes.data);
 
-    // we do the calulations
-    calcChart(cordes.data);
+      // we do the calulations
+      calcChart(cordes.data);
 
-    // we display the output data
-    cordes.displayOutput();
+      // we try to render our calculations on page
+      cordes.render();
+    }
   });
 });
