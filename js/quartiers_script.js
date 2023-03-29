@@ -23,9 +23,6 @@ const userStorage = "oltQuartierUserData";
 // ===== Numerical defined constants =====
 const numConstants = {
   nu: 0.3,
-  // artificially added ??
-  fmodr: 950,
-  // knlfr: 4.58,
 };
 
 // ===== Data fields in quarier tool =====
@@ -44,14 +41,9 @@ const fields = [
   "mvol",
   "dens",
   "nu",
-  "fmodr",
-  // "knlfr",
   "modl",
   "modlsc",
-  "modr",
-  "modrs",
   "hlong",
-  "hlarg",
   "freq",
   "puls",
   "cel",
@@ -127,11 +119,6 @@ $j(document).ready(function () {
     data.hlong = data.epm / data.long;
   }
   
-  function calcHlarg(data) {
-    // =C8/C5
-    data.hlarg = data.epm / data.larg;
-  }
-  
   function calcKnl(data) {
     // =4,73-0,208*C22-6,02*C22*C22
     data.knl = 4.73 - 0.208 * data.hlong - 6.02 * data.hlong * data.hlong;
@@ -147,23 +134,6 @@ $j(document).ready(function () {
   function calcModlsc(data) {
     // =C18/C16
     data.modlsc = data.modl / data.dens;
-  }
-
-  function calcKnlfr(data) {
-    // =4,73-0,208*C23-6,02*C23*C23
-    data.knlfr = 4.73 - 0.208 * data.hlarg - 6.02 * data.hlarg * data.hlarg;
-  }
-
-  function calcModr(data) {
-    // =(F9*F9*C15*C5*C5*C5*C5*C4*C8*PI()*PI())/(C14*F12*F12*F12*F12)/1000000000
-    data.modr = 
-      ((data.fmodr * data.fmodr * data.mvol * Math.pow(data.larg, 4) * data.long * data.epm * Math.PI * Math.PI) /
-      (data.mquadr * Math.pow(data.knlfr, 4))) / 1000000000;
-  }
-
-  function calcModrs(data) {
-    // =C20/C16
-    data.modrs = data.modr / data.dens;
   }
 
   function calcPuls(data) {
@@ -265,13 +235,9 @@ $j(document).ready(function () {
     calcMvol(data);
     calcDens(data);
     calcHlong(data);
-    calcHlarg(data);
     calcKnl(data);
     calcModl(data);
     calcModlsc(data);
-    calcKnlfr(data);
-    calcModr(data);
-    calcModrs(data);
     calcPuls(data);
     calcCel(data);
     calcRdens(data);

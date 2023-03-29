@@ -73,7 +73,7 @@
 }
 
 .olt-info-row {
-  background-color: var(chart-info-backgroud-color);
+  background-color: var(--chart-info-backgroud-color);
 }
 /**********/
 
