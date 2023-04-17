@@ -21,7 +21,7 @@
     src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres_flex_3_points.pdf"
   ></iframe>
 
-  <h2>À remplir</h2>
+  <h2>Renseigner les champs suivants :</h2>
 
   <form id="olt-form1" action=""></form>
   <div class="olt-table">
@@ -131,49 +131,54 @@
           />
         </td>
       </tr>
+    </table>
+  </div>
+
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    <div>CALCULER</div>
+  </button>
+
+  <h2>Résultats :</h2>
+  <div class="olt-table">
+    <table>
       <tr class="olt-result-row">
         <th>Densité bois</th>
         <td class="olt-value olt-result" id="olt-dboi" value="1"></td>
       </tr>
-
-      <tr>
-        <th colspan="2">
-          <h2>Pour info :</h2>
-        </th>
-      </tr>
-
-      <tr class="olt-info-row">
-        <th>Volume (m3)</th>
-        <td class="olt-value" id="olt-vol" value="1"></td>
-      </tr>
-      
-      <tr class="olt-info-row">
-        <th>Volume (cm3)</th>
-        <td class="olt-value" id="olt-volcm3" value="1"></td>
-      </tr>
-      
-      <tr class="olt-info-row">
-        <th>Moment quadratique</th>
-        <td class="olt-value" id="olt-momq" value="1"></td>
-      </tr>
-      
-      <tr class="olt-info-row">
-        <th>Force appliquée</th>
-        <td class="olt-value" id="olt-fapp" value="1"></td>
-      </tr>
-      
       <tr class="olt-result-row">
         <th>Module de Young calculé (GPa) :</th>
         <td class="olt-value olt-result" id="olt-myouc" value="1"></td>
       </tr>
-      
       <tr class="olt-result-row">
         <th>Module spécifique</th>
         <td class="olt-value olt-result" id="olt-mspec" value="1"></td>
       </tr>
     </table>
   </div>
-  <button type="submit" form="olt-form1" class="olt-btn-submit">
-    CALCULER
-  </button>
+
+  <h2>Pour info :</h2>
+  <div class="olt-table">
+    <table>
+      <tr class="olt-info-row">
+        <th>Volume (m3)</th>
+        <td class="olt-value" id="olt-vol" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Volume (cm3)</th>
+        <td class="olt-value" id="olt-volcm3" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Moment quadratique</th>
+        <td class="olt-value" id="olt-momq" value="1"></td>
+      </tr>
+
+      <tr class="olt-info-row">
+        <th>Force appliquée</th>
+        <td class="olt-value" id="olt-fapp" value="1"></td>
+      </tr>
+    </table>
+  </div>
 </div>

@@ -4,7 +4,7 @@
 Plugin Name: openlab-tools
 Plugin URI: https://github.com/Thomas-N-GEORGE/ITEMM-OpenLab-tools
 Description: This plugin displays the Openlab tools in WP pages. They are called by inserting shortcodes [/] in the WP pages, e.g. [openlab-tools tool="poutres"]
-Version: 1.0
+Version: 1.1.2
 Author: Thomas GEORGE for ITEMM / OpenLab
 Author URI: https://www.itemm.fr
 */
