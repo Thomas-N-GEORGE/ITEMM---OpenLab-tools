@@ -1,24 +1,25 @@
 <div class="olt-container">
   <!-- <div class="olt-wrapper"> -->
-  <h1 class="olt-title">POUTRES</h1>
+  <h1 class="olt-title">RIGIDITÉ DES POUTRES</h1>
 
   <!-- .png illustration uploaded by WP, witch gives us this path to file -->
-  <!-- <div class="olt-img-container">
+  <div class="olt-img-container">
     <img
-    src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres.png"
-    alt="illustration poutres"
-    class="olt-img"
+      src="http://localhost/wordpress/wp-content/uploads/2023/04/schema_poutres.png"
+      alt="illustration poutres"
+      class="olt-img"
     />
-  </div> -->
+  </div>
 
-  <!-- .pdf illustration uploaded by WP, witch gives us this path to file -->
+  <!-- .pdf illustration uploaded by WP, witch gives us this path to file 
   <iframe
     class="olt-pdf-iframe"
     src="http://localhost/wordpress/wp-content/uploads/2022/11/schema_poutres.pdf"
   ></iframe>
+  -->
 
   <form id="olt-form1" action=""></form>
-  <h2>Renseigner les dimensions :</h2>
+  <h2>Renseigner les champs suivants :</h2>
   <div class="olt-table">
     <table>
       <!--C3 Longueur (m) :	0,4-->
@@ -58,7 +59,7 @@
       <!--C5 Epaisseur (m) :	0,0221-->
       <tr class="olt-input-row">
         <th>
-          <label for="olt-epai">Epaisseur (m) :</label>
+          <label for="olt-epai">Épaisseur (m) :</label>
         </th>
         <td>
           <input
@@ -70,16 +71,6 @@
             value="1"
           />
         </td>
-      </tr>
-
-      <!--C6 Volume (m3)	0,0005746-->
-      <tr class="olt-info-row">
-        <th>Volume (m3)</th>
-        <td class="olt-value olt-result" id="olt-vol" value="1"></td>
-      </tr>
-      <tr class="olt-info-row">
-        <th>Volume (cm3)</th>
-        <td class="olt-value olt-result" id="olt-volcm3" value="1"></td>
       </tr>
 
       <!--C7 Masse (kg)	0,218-->
@@ -99,10 +90,102 @@
         </td>
       </tr>
 
+      <!-- F3 Fréq. Mode flexion (Hz) :	746 -->
+      <tr class="olt-input-row">
+        <th>
+          <label for="olt-freqflex">Fréq. Mode flexion (Hz) :</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="olt-freqflex"
+            form="olt-form1"
+            class="olt-value olt-input"
+            id="olt-freqflex"
+            value="1"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    <div>CALCULER</div>
+  </button>
+
+  <h2>Résultats :</h2>
+  <div class="olt-table">
+    <table>
       <!--C8 Masse vol. (kg/m3)	379-->
       <tr class="olt-result-row">
         <th>Masse vol. (kg/m3)</th>
         <td class="olt-value olt-result" id="olt-mvol" value="1"></td>
+      </tr>
+
+      <!-- F7 Module de Young  (GPa)	10,47 -->
+      <tr class="olt-result-row">
+        <th>Module de Young (GPa)</th>
+        <td class="olt-value olt-result" id="olt-myou" value="1"></td>
+      </tr>
+
+      <!-- F8 Module de Young spécifique	27,61 -->
+      <tr class="olt-result-row">
+        <th>Module de Young spécifique</th>
+        <td class="olt-value olt-result" id="olt-myouspe" value="1"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Fréquences inférées (chercher autour de ces valeurs)</h2>
+  <div class="olt-table">
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Fréquence en flexion (Hz)</th>
+      </tr>
+      <!-- I5 Résineux (Guitard)	722,4 -->
+      <tr>
+        <th>
+          <div>Résineux (Guitard)</div>
+        </th>
+        <td>
+          <div class="olt-value olt-result" id="olt-rgui" value="1"></div>
+        </td>
+      </tr>
+
+      <!-- I6 Feuillus (Guitard)	671,6 -->
+      <tr>
+        <th>
+          <div>Feuillus (Guitard)</div>
+        </th>
+        <td>
+          <div class="olt-value olt-result" id="olt-fgui" value="1"></div>
+        </td>
+      </tr>
+
+      <!-- I7 Personnalisé	1928,5 -->
+      <tr>
+        <th>
+          <div>Personnalisé</div>
+        </th>
+        <td>
+          <div class="olt-value olt-result" id="olt-pers" value="1"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Pour information</h2>
+  <div class="olt-table">
+    <table>
+      <!--C6 Volume (m3)	0,0005746-->
+      <tr class="olt-info-row">
+        <th>Volume (m3)</th>
+        <td class="olt-value olt-result" id="olt-vol" value="1"></td>
+      </tr>
+      <tr class="olt-info-row">
+        <th>Volume (cm3)</th>
+        <td class="olt-value olt-result" id="olt-volcm3" value="1"></td>
       </tr>
 
       <!--C9 Nuxy	0,3 -->
@@ -143,67 +226,23 @@
       </tr>
 
       <!-- C13 Gamma	1,84E-07 -->
-      <tr class="olt-info-row">
+      <tr class="olt-info-row olt-hide">
         <th>Gamma</th>
         <td class="olt-value olt-result" id="olt-gamma" value="1"></td>
       </tr>
 
       <!-- C15 I (m4)	5,64E-07 -->
-      <tr class="olt-info-row">
+      <tr class="olt-info-row olt-hide">
         <th>I (m4)</th>
         <td class="olt-value olt-result" id="olt-i2" value="1"></td>
       </tr>
 
       <!-- C16 K (m4)	1,05E-08 -->
-      <tr class="olt-info-row">
+      <tr class="olt-info-row olt-hide">
         <th>K (m4)</th>
         <td class="olt-value olt-result" id="olt-k" value="1"></td>
       </tr>
-    </table>
-  </div>
 
-  <h2>Fréquences à renseigner :</h2>
-  <div class="olt-table">
-    <table>
-      <!-- F3 Fréq. Mode flexion (Hz) :	746 -->
-      <tr class="olt-input-row">
-        <th>
-          <label for="olt-freqflex">Fréq. Mode flexion (Hz) :</label>
-        </th>
-        <td>
-          <input
-            type="text"
-            name="olt-freqflex"
-            form="olt-form1"
-            class="olt-value olt-input"
-            id="olt-freqflex"
-            value="1"
-          />
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <h2>Rigidités calculées :</h2>
-  <div class="olt-table">
-    <table>
-      <!-- F7 Module de Young  (GPa)	10,47 -->
-      <tr class="olt-result-row">
-        <th>Module de Young (GPa)</th>
-        <td class="olt-value olt-result" id="olt-myou" value="1"></td>
-      </tr>
-
-      <!-- F8 Module de Young spécifique	27,61 -->
-      <tr class="olt-result-row">
-        <th>Module de Young spécifique</th>
-        <td class="olt-value olt-result" id="olt-myouspe" value="1"></td>
-      </tr>
-    </table>
-  </div>
-
-  <h2>Célérités calculées :</h2>
-  <div class="olt-table">
-    <table>
       <!-- F13 Célérité ondes Trac Comp 3D (m/s)	6096,3 -->
       <tr class="olt-info-row">
         <th>Célérité ondes Trac Comp 3D (m/s)</th>
@@ -217,13 +256,13 @@
       </tr>
 
       <!-- F16 Célérité de phase au  mode 1 (m/s)	396,39 -->
-      <tr class="olt-result-row">
+      <tr class="olt-info-row">
         <th>Célérité de phase au mode 1 (m/s)</th>
         <td class="olt-value olt-result" id="olt-cphas" value="1"></td>
       </tr>
 
       <!-- F17 Longueur d'ondes de flexion mode 1 (m)	0,53 -->
-      <tr class="olt-result-row">
+      <tr class="olt-info-row">
         <th>Longueur d'ondes de flexion mode 1 (m)</th>
         <td class="olt-value olt-result" id="olt-londe" value="1"></td>
       </tr>
@@ -239,19 +278,19 @@
         <th>EL (GPa)</th>
       </tr>
       <!-- Résineux	C21 0,379	D21 9,82 -->
-      <tr>
-        <th>Résineux</th>
+      <tr class="olt-value olt-info-row">
+        <th>Résineux [1]</th>
         <td class="olt-value olt-info-row" id="olt-rdens" value="1"></td>
         <td class="olt-value olt-info-row" id="olt-rel" value="1"></td>
       </tr>
       <!-- Feuillus	C22 0,379	D22 8,49 -->
-      <tr>
-        <th>Feuillus</th>
+      <tr class="olt-value olt-info-row">
+        <th>Feuillus [1]</th>
         <td class="olt-value olt-info-row" id="olt-fdens" value="1"></td>
         <td class="olt-value olt-info-row" id="olt-fel" value="1"></td>
       </tr>
       <!-- Personnalisé	C23 0,379	D23 70,00 -->
-      <tr>
+      <tr class="olt-input-row">
         <th>Personnalisé</th>
         <td class="olt-value olt-info-row" id="olt-pdens" value="1"></td>
         <td class="olt-input-row">
@@ -268,52 +307,9 @@
     </table>
   </div>
 
-  <p>
-    Guitard, D., & El Amri, F. (1987). Modèles prévisionnels de comportement
+  <p class="olt-reference">
+    [1] Guitard, D., & El Amri, F. (1987). Modèles prévisionnels de comportement
     élastique tridimensionnel pour les bois feuillus et les bois résineux.
     Annales Des Sciences Forestières, 44(3), 335–358.
   </p>
-
-  <h2>Fréquences inférées (chercher autour de ces valeurs)</h2>
-  <div class="olt-table">
-    <table>
-      <tr>
-        <td></td>
-        <th>Flexion (Hz)</th>
-      </tr>
-      <!-- I5 Résineux (Guitard)	722,4 -->
-      <tr>
-        <th>
-          <div>Résineux (Guitard)</div>
-        </th>
-        <td>
-          <div class="olt-value olt-result" id="olt-rgui" value="1"></div>
-        </td>
-      </tr>
-
-      <!-- I6 Feuillus (Guitard)	671,6 -->
-      <tr>
-        <th>
-          <div>Feuillus (Guitard)</div>
-        </th>
-        <td>
-          <div class="olt-value olt-result" id="olt-fgui" value="1"></div>
-        </td>
-      </tr>
-
-      <!-- I7 Personnalisé	1928,5 -->
-      <tr>
-        <th>
-          <div>Personnalisé</div>
-        </th>
-        <td>
-          <div class="olt-value olt-result" id="olt-pers" value="1"></div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <button type="submit" form="olt-form1" class="olt-btn-submit">
-    CALCULER
-  </button>
 </div>

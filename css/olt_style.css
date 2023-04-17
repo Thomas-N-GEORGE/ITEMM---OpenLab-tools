@@ -1,8 +1,6 @@
 /* COMMON STYLE SHEET FOR ALL TOOLS*/
 /* Her our style will affect ALL TOOLS */
 
-
-
 /*************************/
 /* PLUGIN MAIN CONTAINER */
 /*************************/
@@ -29,16 +27,23 @@
 }
 /*************************/
 
-
 /*********/
 /* TITLE */
 /*********/
 .olt-title {
-  color: red;
+  color: black;
   text-align: center;
+  font-weight: 900;
 }
 /*********/
 
+/********************/
+/* PDF ILLUSTRATION */
+/********************/
+.olt-img-container {
+  align-self: center;
+}
+/*********/
 
 /********************/
 /* PDF ILLUSTRATION */
@@ -48,7 +53,6 @@
   margin: 5rem 0;
 }
 /********************/
-
 
 /**********/
 /* CHARTS */
@@ -61,7 +65,8 @@
   text-align: end;
 }
 
-.olt-input-row, .olt-input-cell {
+.olt-input-row,
+.olt-input-cell {
   background-color: var(--chart-input-backgroud-color);
   font-size: 1.6rem;
 }
@@ -75,8 +80,11 @@
 .olt-info-row {
   background-color: var(--chart-info-backgroud-color);
 }
-/**********/
 
+.olt-hide {
+  display: none;
+}
+/**********/
 
 /****************************/
 /* SUBMIT BUTTON "CALCULER" */
@@ -85,4 +93,8 @@
   background-color: var(--chart-result-backgroud-color);
   border: none;
   box-shadow: none;
+}
+
+.olt-reference {
+  font-style: italic;
 }
