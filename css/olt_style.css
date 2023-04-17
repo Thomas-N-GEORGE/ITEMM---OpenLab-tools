@@ -71,13 +71,15 @@
   font-size: 1.6rem;
 }
 
-.olt-result-row {
+.olt-result-row,
+.olt-result-cell {
   background-color: var(--chart-result-backgroud-color);
   font-size: 1.6rem;
   font-weight: bold;
 }
 
-.olt-info-row {
+.olt-info-row,
+.olt-info-cell {
   background-color: var(--chart-info-backgroud-color);
 }
 

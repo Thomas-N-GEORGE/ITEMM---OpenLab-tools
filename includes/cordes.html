@@ -40,7 +40,7 @@
 
       <tr class="olt-input-row">
         <th>
-          <label for="olt-ray">Rayon R [m]</label>
+          <label for="olt-ray">Cylindrique : rayon R [m]</label>
         </th>
         <td>
           <input
@@ -56,7 +56,7 @@
 
       <tr class="olt-input-row">
         <th>
-          <label for="olt-apothex">Apothème hexagonal [m]</label>
+          <label for="olt-apothex">Hexagonal : apothème [m]</label>
         </th>
         <td>
           <input
@@ -173,10 +173,11 @@
   <h2>Calcul fréquence inharmonicité</h2>
   <div class="olt-table">
     <table>
-      <tr>
-        <td rowspan="10"></td>
+      <tr class="olt-input-row">
         <th class="olt-input-row olt-input-cell">
-          <label for="olt-masscyl">Masse cylindrique [kg]</label>
+          <label for="olt-masscyl"
+            >Masse appliquée section cylindrique [kg]</label
+          >
         </th>
         <td class="olt-input-row olt-input-cell">
           <input
@@ -190,9 +191,11 @@
         </td>
       </tr>
 
-      <tr>
+      <tr class="olt-input-row">
         <th class="olt-input-row olt-input-cell">
-          <label for="olt-masshex">Masse hexagonal [kg]</label>
+          <label for="olt-masshex"
+            >Masse appliquée section hexagonale [kg]</label
+          >
         </th>
         <td class="olt-input-row olt-input-cell">
           <input
@@ -205,51 +208,61 @@
           />
         </td>
       </tr>
+    </table>
+  </div>
 
-      <tr class="olt-info-row">
-        <th>Tension cylindrique [N]</th>
-        <td class="olt-value" id="olt-tenscyl" value="1"></td>
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    <div>CALCULER</div>
+  </button>
+
+  <h2>Résultats</h2>
+  <div class="olt-table">
+    <table>
+      <tr>
+        <td rowspan="8"></td>
+        <th>Tension appliquée section cylindrique [N]</th>
+        <td class="olt-value olt-info-row" id="olt-tenscyl" value="1"></td>
       </tr>
 
       <tr class="olt-info-row">
-        <th>Tension hexagonal [N]</th>
-        <td class="olt-value" id="olt-tenshex" value="1"></td>
+        <th>Tension appliquée section hexagonale [N]</th>
+        <td class="olt-value olt-info-row" id="olt-tenshex" value="1"></td>
       </tr>
 
       <tr class="olt-info-row">
-        <th>Contrainte cylindrique [Pa]</th>
-        <td class="olt-value" id="olt-contcyl" value="1"></td>
+        <th>Contrainte appliquée section cylindrique [Pa]</th>
+        <td class="olt-value olt-info-row" id="olt-contcyl" value="1"></td>
       </tr>
 
       <tr class="olt-info-row">
-        <th>Contrainte hexagonale [Pa]</th>
-        <td class="olt-value" id="olt-conthex" value="1"></td>
+        <th>Contrainte appliquée section hexagonale [Pa]</th>
+        <td class="olt-value olt-info-row" id="olt-conthex" value="1"></td>
       </tr>
 
       <tr class="olt-info-row">
-        <th>Déformation cylindrique</th>
-        <td class="olt-value" id="olt-defcyl" value="1"></td>
+        <th>Déformation résultante cylindrique</th>
+        <td class="olt-value olt-info-row" id="olt-defcyl" value="1"></td>
       </tr>
-
       <tr class="olt-info-row">
-        <th>Déformation hexagonal</th>
-        <td class="olt-value" id="olt-defhex" value="1"></td>
+        <th>Déformation résultante hexagonale</th>
+        <td class="olt-value olt-info-row" id="olt-defhex" value="1"></td>
       </tr>
 
       <tr class="olt-result-row">
-        <th>Inharmonicité cylindrique B</th>
+        <th>Inharmonicité section cylindrique B</th>
         <td class="olt-value olt-result" id="olt-inharcyl" value="1"></td>
       </tr>
 
       <tr class="olt-result-row">
-        <th>Inharmonicité hexagonal B</th>
+        <th>Inharmonicité section hexagonale B</th>
         <td class="olt-value olt-result" id="olt-inharhex" value="1"></td>
       </tr>
 
       <tr>
         <th>N° mode</th>
-        <th>Fréq cylindrique [hz]</th>
-        <th>Fréq hexagonal [hz]</th>
+        <th>Fréquence cylindrique [Hz]</th>
+        <th>Fréquence hexagonale [Hz]</th>
       </tr>
 
       <tr class="olt-result-row">
@@ -325,8 +338,4 @@
       </tr>
     </table>
   </div>
-
-  <button type="submit" form="olt-form1" class="olt-btn-submit">
-    CALCULER
-  </button>
 </div>

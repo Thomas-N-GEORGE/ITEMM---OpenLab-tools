@@ -3,6 +3,9 @@
 
   <form id="olt-form1" action=""></form>
 
+  <h2>Outil n°1 : calcul de fréquence</h2>
+  <h2>Renseigner les champs suivants :</h2>
+
   <!-- CHART 1 -->
   <div class="olt-table">
     <table>
@@ -27,7 +30,7 @@
       </tr>
       <tr class="olt-input-row">
         <th>
-          <label for="olt-base1">Base b (m)</label>
+          <label for="olt-base1">Largeur (m)</label>
         </th>
         <td>
           <input
@@ -65,7 +68,7 @@
         <th>Volume (cm3)</th>
         <td class="olt-value" id="olt-vol1cm3" value="1"></td>
       </tr>
-      
+
       <tr class="olt-input-row">
         <th>
           <label for="olt-mvol1">Masse volumique (kg/m3)</label>
@@ -81,7 +84,7 @@
           />
         </td>
       </tr>
-      
+
       <tr class="olt-info-row">
         <th>
           <div>Aire (m2)</div>
@@ -122,20 +125,20 @@
     </table>
   </div>
 
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" form="olt-form1" class="olt-btn-submit">
+    <div>CALCULER</div>
+  </button>
+
+  <h2>Outil n°2 : calcul de longueur</h2>
+  <h2>Renseigner les champs suivants :</h2>
+
   <!-- CHART 2 -->
   <div class="olt-table">
     <table>
-      <tr class="olt-result-row">
-        <th>Longueur L (m)</th>
-        <td class="olt-value olt-result" id="olt-long2" value="1"></td>
-      </tr>
-      <tr class="olt-info-row">
-        <th>knL mode 1</th>
-        <td class="olt-value" id="olt-knl2" value="1">4,73</td>
-      </tr>
       <tr class="olt-input-row">
         <th>
-          <label for="olt-base2">Base b (m)</label>
+          <label for="olt-base2">Largeur (m)</label>
         </th>
         <td>
           <input
@@ -167,7 +170,7 @@
         <th>Volume (m3)</th>
         <td class="olt-value" id="olt-vol2" value="1"></td>
       </tr>
-      
+
       <tr class="olt-info-row">
         <th>Volume (cm3)</th>
         <td class="olt-value" id="olt-vol2cm3" value="1"></td>
@@ -234,10 +237,19 @@
         <th>Vitesse des ondes (m/s)</th>
         <td class="olt-value" id="olt-vito2" value="1"></td>
       </tr>
+      <tr class="olt-result-row">
+        <th>Longueur L (m)</th>
+        <td class="olt-value olt-result" id="olt-long2" value="1"></td>
+      </tr>
+      <tr class="olt-info-row">
+        <th>knL mode 1</th>
+        <td class="olt-value" id="olt-knl2" value="1">4,73</td>
+      </tr>
     </table>
   </div>
 
+  <!-- SUBMIT BUTTON -->
   <button type="submit" form="olt-form1" class="olt-btn-submit">
-    CALCULER
+    <div>CALCULER</div>
   </button>
 </div>
